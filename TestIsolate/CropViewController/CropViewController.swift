@@ -35,7 +35,6 @@ public class CropViewController: UIViewController {
     }
     
     public weak var delegate: CropViewControllerDelegate?
-    public var mode: CropViewControllerMode = .normal
     public var config = Config()
     
     private var orientation: UIDeviceOrientation?
@@ -53,13 +52,10 @@ public class CropViewController: UIViewController {
     
     init(image: UIImage,
          config: Config = Config(),
-         mode: CropViewControllerMode = .normal,
          cropToolbar: CropToolbarProtocol = CropToolbar(frame: CGRect.zero)) {
         self.image = image
         
         self.config = config
-        
-        self.mode = mode
         self.cropToolbar = cropToolbar
         
         super.init(nibName: nil, bundle: nil)
@@ -83,11 +79,6 @@ public class CropViewController: UIViewController {
         
         config.cropToolbarConfig.includeFixedRatioSettingButton = true
         
-        if mode == .normal {
-            config.cropToolbarConfig.mode = .normal
-        } else {
-            config.cropToolbarConfig.mode = .simple
-        }
         
         cropToolbar.createToolbarUI(config: config.cropToolbarConfig)
         

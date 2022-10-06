@@ -650,7 +650,7 @@ extension CropView {
         }
     }
     
-    func transform(byTransformInfo transformation: Transformation, rotateDial: Bool = true) {
+    func transform(byTransformInfo transformation: Transformation) {
         viewModel.setRotatingStatus(by: CGAngle(radians:transformation.rotation))
 
         if (transformation.scrollBounds != .zero) {

@@ -117,7 +117,6 @@
 				1A119BD728EDE5350088F9CB /* CGAngel.swift */,
 				1A119BE328EDE55C0088F9CB /* CropViewController */,
 				1A119BCD28EDE50D0088F9CB /* Extensions */,
-				1A119BC428EDE40F0088F9CB /* ToolbarButtonOptions.swift */,
 				1A119BC228EDE3F90088F9CB /* RatioOptions.swift */,
 				1A119BC028EDE3B50088F9CB /* DGCropImage.swift */,
 				1A119BBB28EDE34E0088F9CB /* Helpers */,
@@ -136,15 +135,14 @@
 		1A119BA428EDE2D60088F9CB /* CropView */ = {
 			isa = PBXGroup;
 			children = (
+				1A119BF428EDF0B70088F9CB /* Extensions */,
 				1A119BAE28EDE3110088F9CB /* CropViewModel.swift */,
 				1A119BAB28EDE3110088F9CB /* CropView.swift */,
 				1A119BAD28EDE3110088F9CB /* CropOverlayView.swift */,
 				1A119BA928EDE3110088F9CB /* CropScrollView.swift */,
 				1A119BB028EDE3120088F9CB /* ImageContainer.swift */,
-				1A119BC628EDE4EE0088F9CB /* MaskBackground */,
-				1A119BF428EDF0B70088F9CB /* Extensions */,
-				1A119BB128EDE3120088F9CB /* CropMaskViewManager.swift */,
 				1A119BAF28EDE3120088F9CB /* CropViewStatus.swift */,
+				1A119BC628EDE4EE0088F9CB /* MaskBackground */,
 				1A119BA628EDE2FB0088F9CB /* CropBoxFreeAspectFrameUpdater.swift */,
 				1A119BA528EDE2FB0088F9CB /* CropBoxLockedAspectFrameUpdater.swift */,
 			);
@@ -162,6 +160,7 @@
 		1A119BC628EDE4EE0088F9CB /* MaskBackground */ = {
 			isa = PBXGroup;
 			children = (
+				1A119BB128EDE3120088F9CB /* CropMaskViewManager.swift */,
 				1A119BC728EDE4EE0088F9CB /* CropVisualEffectView.swift */,
 				1A119BC828EDE4EE0088F9CB /* CropDimmingView.swift */,
 				1A119BC928EDE4EE0088F9CB /* CropMaskProtocol.swift */,
@@ -202,9 +201,10 @@
 		1A119BF728EEA4660088F9CB /* CropToobar */ = {
 			isa = PBXGroup;
 			children = (
-				1A119BEA28EDE55C0088F9CB /* RatioItemView.swift */,
-				1A119BEB28EDE55C0088F9CB /* CropToolbarProtocol.swift */,
 				1A119BE428EDE55C0088F9CB /* CropToolbar.swift */,
+				1A119BEB28EDE55C0088F9CB /* CropToolbarProtocol.swift */,
+				1A119BC428EDE40F0088F9CB /* ToolbarButtonOptions.swift */,
+				1A119BEA28EDE55C0088F9CB /* RatioItemView.swift */,
 			);
 			path = CropToobar;
 			sourceTree = "<group>";

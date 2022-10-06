@@ -56,7 +56,7 @@ public class CropToolbar: UIView, CropToolbarProtocol {
 
     private func createCancelButton() {
 
-        cancelButton = createOptionButton(withTitle: "cancelText", andAction: #selector(cancel))
+        cancelButton = createOptionButton(withTitle: "cancel", andAction: #selector(cancel))
     }
 
     private func createCounterClockwiseRotationButton() {
@@ -128,10 +128,8 @@ public class CropToolbar: UIView, CropToolbarProtocol {
         createButtonContainer()
         setButtonContainerLayout()
 
-        if config.mode == .normal {
-            createCancelButton()
-            addButtonsToContainer(button: cancelButton)
-        }
+        createCancelButton()
+        addButtonsToContainer(button: cancelButton)
 
         if config.toolbarButtonOptions.contains(.counterclockwiseRotate) {
             createCounterClockwiseRotationButton()
@@ -154,10 +152,8 @@ public class CropToolbar: UIView, CropToolbarProtocol {
             resetButton?.isHidden = true
         }
 
-        if config.mode == .normal {
-            createCropButton()
-            addButtonsToContainer(button: cropButton)
-        }
+        createCropButton()
+        addButtonsToContainer(button: cropButton)
     }
 
     public func getRatioListPresentSourceView() -> UIView? {
