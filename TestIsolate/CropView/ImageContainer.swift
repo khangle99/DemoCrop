@@ -35,6 +35,7 @@ class ImageContainer: UIView {
     }
     
     func contains(rect: CGRect, fromView view: UIView, tolerance: CGFloat = 1e-6) -> Bool {
+        // kiem tra rect from view co nam trong bound cua uiview (contain) hay khong
         let newRect = view.convert(rect, to: self)
         
         let p1 = newRect.origin

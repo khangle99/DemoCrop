@@ -20,11 +20,6 @@ public extension CropViewControllerDelegate where Self: UIViewController {
     func cropViewControllerDidFailToCrop(_ cropViewController: CropViewController, original: UIImage) {}
 }
 
-public enum CropViewControllerMode {
-    case normal
-    case customizable
-}
-
 public class CropViewController: UIViewController {
     /// When a CropViewController is used in a storyboard,
     /// passing an image to it is needed after the CropViewController is created.
@@ -40,7 +35,7 @@ public class CropViewController: UIViewController {
     private var orientation: UIDeviceOrientation?
     private lazy var cropView = CropView(image: image, viewModel: CropViewModel())
     private var cropToolbar: CropToolbarProtocol
-    private var ratioSelector: RatioSelector?
+    private var ratioSelector: RatioSelector!
     private var stackView: UIStackView?
     private var cropStackView: UIStackView!
     private var initialLayout = false
@@ -69,7 +64,7 @@ public class CropViewController: UIViewController {
     fileprivate func createRatioSelector() {
         let fixedRatioManager = getFixedRatioManager()
         self.ratioSelector = RatioSelector(type: fixedRatioManager.type, originalRatioH: fixedRatioManager.originalRatioH, ratios: fixedRatioManager.ratios)
-        self.ratioSelector?.didGetRatio = { [weak self] ratio in
+        self.ratioSelector.didGetRatio = { [weak self] ratio in
             self?.setFixedRatio(ratio)
         }
     }
@@ -127,7 +122,7 @@ public class CropViewController: UIViewController {
         if initialLayout == false {
             initialLayout = true
             view.layoutIfNeeded()
-            cropView.adaptForCropBox()
+            cropView.resetUIFrame()
         }
     }
     
@@ -145,7 +140,7 @@ public class CropViewController: UIViewController {
         rotated()
     }
     
-    @objc func rotated() {
+    private func rotated() {
         let currentOrientation = UIDevice.current.orientation
         
         orientation = currentOrientation
@@ -185,82 +180,6 @@ public class CropViewController: UIViewController {
         cropView.delegate = self
         cropView.clipsToBounds = true
         cropView.cropVisualEffectType = config.cropVisualEffectType
-        
-        cropView.forceFixedRatio = false
-    }
-    
-    
-    
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    private func getTransformInfo(byTransformInfo transformInfo: Transformation) -> Transformation {
-        let cropFrame = cropView.viewModel.cropOrignFrame
-        let contentBound = cropView.getContentBounds()
-        
-        let adjustScale: CGFloat
-        var maskFrameWidth: CGFloat
-        var maskFrameHeight: CGFloat
-        
-        if ( transformInfo.maskFrame.height / transformInfo.maskFrame.width >= contentBound.height / contentBound.width ) {
-            maskFrameHeight = contentBound.height
-            maskFrameWidth = transformInfo.maskFrame.width / transformInfo.maskFrame.height * maskFrameHeight
-            adjustScale = maskFrameHeight / transformInfo.maskFrame.height
-        } else {
-            maskFrameWidth = contentBound.width
-            maskFrameHeight = transformInfo.maskFrame.height / transformInfo.maskFrame.width * maskFrameWidth
-            adjustScale = maskFrameWidth / transformInfo.maskFrame.width
-        }
-        
-        var newTransform = transformInfo
-        
-        newTransform.offset = CGPoint(x:transformInfo.offset.x * adjustScale,
-                                      y:transformInfo.offset.y * adjustScale)
-        
-        newTransform.maskFrame = CGRect(x: cropFrame.origin.x + (cropFrame.width - maskFrameWidth) / 2,
-                                        y: cropFrame.origin.y + (cropFrame.height - maskFrameHeight) / 2,
-                                        width: maskFrameWidth,
-                                        height: maskFrameHeight)
-        newTransform.scrollBounds = CGRect(x: transformInfo.scrollBounds.origin.x * adjustScale,
-                                           y: transformInfo.scrollBounds.origin.y * adjustScale,
-                                           width: transformInfo.scrollBounds.width * adjustScale,
-                                           height: transformInfo.scrollBounds.height * adjustScale)
-        
-        return newTransform
-    }
-    
-    private func getTransformInfo(byNormalizedInfo normailizedInfo: CGRect) -> Transformation {
-        let cropFrame = cropView.viewModel.cropBoxFrame
-        
-        let scale: CGFloat = min(1/normailizedInfo.width, 1/normailizedInfo.height)
-        
-        var offset = cropFrame.origin
-        offset.x = cropFrame.width * normailizedInfo.origin.x * scale
-        offset.y = cropFrame.height * normailizedInfo.origin.y * scale
-        
-        var maskFrame = cropFrame
-        
-        if (normailizedInfo.width > normailizedInfo.height) {
-            let adjustScale = 1 / normailizedInfo.width
-            maskFrame.size.height = normailizedInfo.height * cropFrame.height * adjustScale
-            maskFrame.origin.y += (cropFrame.height - maskFrame.height) / 2
-        } else if (normailizedInfo.width < normailizedInfo.height) {
-            let adjustScale = 1 / normailizedInfo.height
-            maskFrame.size.width = normailizedInfo.width * cropFrame.width * adjustScale
-            maskFrame.origin.x += (cropFrame.width - maskFrame.width) / 2
-        }
-        
-        let manualZoomed = (scale != 1.0)
-        let transformantion = Transformation(offset: offset,
-                                             rotation: 0,
-                                             scale: scale,
-                                             manualZoomed: manualZoomed,
-                                             intialMaskFrame: .zero,
-                                             maskFrame: maskFrame,
-                                             scrollBounds: .zero)
-        return transformantion
     }
     
     private func handleCancel() {
@@ -320,10 +239,7 @@ extension CropViewController {
         cropStackView = UIStackView()
         cropStackView.axis = .vertical
         cropStackView.addArrangedSubview(cropView)
-        
-        if let ratioSelector = ratioSelector {
-            cropStackView.addArrangedSubview(ratioSelector)
-        }
+        cropStackView.addArrangedSubview(ratioSelector)
         
         stackView = UIStackView()
         view.addSubview(stackView!)
@@ -418,10 +334,6 @@ extension CropViewController {
                                             cropped: image,
                                             transformation: cropResult.transformation,
                                             cropInfo: cropResult.cropInfo)
-    }
-    
-    public func process(_ image: UIImage) -> UIImage? {
-        return cropView.crop(image).croppedImage
     }
 }
 

@@ -7,18 +7,11 @@
 
 import UIKit
 
-public enum CropToolbarMode {
-    case normal
-    case simple
-}
-
 public class CropToolbar: UIView, CropToolbarProtocol {
     public var heightForVerticalOrientationConstraint: NSLayoutConstraint?
     public var widthForHorizonOrientationConstraint: NSLayoutConstraint?
 
     public weak var cropToolbarDelegate: CropToolbarDelegate?
-
-    var fixedRatioSettingButton: UIButton?
 
     var cancelButton: UIButton?
     var resetButton: UIButton?
@@ -55,7 +48,6 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     private func createCancelButton() {
-
         cancelButton = createOptionButton(withTitle: "cancel", andAction: #selector(cancel))
     }
 
@@ -156,10 +148,6 @@ public class CropToolbar: UIView, CropToolbarProtocol {
         addButtonsToContainer(button: cropButton)
     }
 
-    public func getRatioListPresentSourceView() -> UIView? {
-        return fixedRatioSettingButton
-    }
-
     public func respondToOrientationChange() {
         if UIDevice.current.orientation == .portrait {
             optionButtonStackView?.axis = .horizontal
@@ -171,11 +159,9 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     public func handleFixedRatioSetted(ratio: Double) {
-        fixedRatioSettingButton?.tintColor = nil
     }
 
     public func handleFixedRatioUnSetted() {
-        fixedRatioSettingButton?.tintColor = .white
     }
 
     public func handleCropViewDidBecomeResettable() {

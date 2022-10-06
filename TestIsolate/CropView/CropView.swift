@@ -48,7 +48,7 @@ class CropView: UIView {
 
     var manualZoomed = false
     private var cropFrameKVO: NSKeyValueObservation?
-    var forceFixedRatio = false
+    
     var imageStatusChangedCheckForForceFixedRatio = false
     
     deinit {
@@ -96,7 +96,7 @@ class CropView: UIView {
     
     private func render(by viewStatus: CropViewStatus) {
         gridOverlayView.isHidden = false
-        
+        print(viewStatus)
         switch viewStatus {
         case .initial:
             initalRender()
@@ -112,10 +112,6 @@ class CropView: UIView {
             gridOverlayView.setGrid(hidden: false, animated: true)
         case .touchCropboxHandle(let tappedEdge):
             gridOverlayView.handleEdgeTouched(with: tappedEdge)
-            cropMaskViewManager.showDimmingBackground()
-        case .touchRotationBoard:
-            gridOverlayView.gridLineNumberType = .rotate
-            gridOverlayView.setGrid(hidden: false, animated: true)
             cropMaskViewManager.showDimmingBackground()
         case .betweenOperation:
             gridOverlayView.handleEdgeUntouched()
@@ -134,13 +130,6 @@ class CropView: UIView {
     
     private func imageStatusChanged() -> Bool {
         if viewModel.getTotalRadians() != 0 { return true }
-        
-        if (forceFixedRatio) {
-            if imageStatusChangedCheckForForceFixedRatio {
-                imageStatusChangedCheckForForceFixedRatio = false
-                return scrollView.zoomScale != 1
-            }
-        }
         
         if !isTheSamePoint(p1: getImageLeftTopAnchorPoint(), p2: .zero) {
             return true
@@ -189,10 +178,6 @@ class CropView: UIView {
         if aspectRatioLockEnabled {
             setFixedRatioCropBox()
         }
-    }
-    
-    func adaptForCropBox() {
-        resetUIFrame()
     }
     
     private func setupScrollView() {
@@ -279,7 +264,7 @@ class CropView: UIView {
 // MARK: - Adjust UI
 extension CropView {
     private func rotateScrollView() {
-        let totalRadians = forceFixedRatio ? viewModel.radians : viewModel.getTotalRadians()
+        let totalRadians = viewModel.getTotalRadians()
         
         self.scrollView.transform = CGAffineTransform(rotationAngle: totalRadians)
         self.updatePosition(by: totalRadians)
@@ -369,7 +354,7 @@ extension CropView {
         
         let newCropBounds = CGRect(x: 0, y: 0, width: viewModel.cropBoxFrame.width * scale, height: viewModel.cropBoxFrame.height * scale)
         
-        let radians = forceFixedRatio ? viewModel.radians : viewModel.getTotalRadians()
+        let radians = viewModel.getTotalRadians()
         
         // calculate the new bounds of scroll view
         let newBoundWidth = abs(cos(radians)) * newCropBounds.size.width + abs(sin(radians)) * newCropBounds.size.height
@@ -412,7 +397,7 @@ extension CropView {
             scrollView.checkContentOffset()
             makeSureImageContainsCropOverlay()
         }
-        
+        // NOTE:1
         if animation {
             UIView.animate(withDuration: 0.25, animations: {
                 updateUI(by: newCropBoxFrame, and: scaleFrame)
@@ -520,7 +505,7 @@ extension CropView {
     }
     
     func getTotalRadians() -> CGFloat {
-        return forceFixedRatio ? viewModel.radians : viewModel.getTotalRadians()
+        return viewModel.getTotalRadians()
     }
     
     func crop() -> (croppedImage: UIImage?, transformation: Transformation, cropInfo: CropInfo) {
@@ -558,22 +543,6 @@ extension CropView {
         viewModel.setDegree90RotatingStatus()
         let rorateDuration = 0.25
         
-        if forceFixedRatio {
-            viewModel.setRotatingStatus(by: CGAngle(radians: viewModel.radians))
-            let angle = CGAngle(radians: rotateAngle + viewModel.radians)
-            
-            UIView.animate(withDuration: rorateDuration, animations: {
-                self.viewModel.setRotatingStatus(by: angle)
-            }) {[weak self] _ in
-                guard let self = self else { return }
-                self.viewModel.rotateBy90(rotateAngle: rotateAngle)
-                self.viewModel.setBetweenOperationStatus()
-                completion()
-            }
-            
-            return
-        }
-        
         var rect = gridOverlayView.frame
         rect.size.width = gridOverlayView.frame.height
         rect.size.height = gridOverlayView.frame.width
@@ -600,13 +569,9 @@ extension CropView {
         scrollView.removeFromSuperview()
         gridOverlayView.removeFromSuperview()
         
-        if forceFixedRatio {
-            aspectRatioLockEnabled = true
-        } else {
-            aspectRatioLockEnabled = false
-        }
+        aspectRatioLockEnabled = false
         
-        viewModel.reset(forceFixedRatio: forceFixedRatio)
+        viewModel.reset()
         resetUIFrame()
         delegate?.cropViewDidBecomeUnResettable(self)
     }
@@ -622,16 +587,14 @@ extension CropView {
     }
     
 
-    func setFixedRatioCropBox(zoom: Bool = true, cropBox: CGRect? = nil) {
-        let refCropBox = cropBox ?? getInitialCropBoxRect()
+    func setFixedRatioCropBox(zoom: Bool = true) {
+        let refCropBox = getInitialCropBoxRect()
         viewModel.setCropBoxFrame(by: refCropBox, and: getImageRatioH())
         
         let contentRect = getContentBounds()
         adjustUIForNewCrop(contentRect: contentRect, animation: false, zoom: zoom) { [weak self] in
             guard let self = self else { return }
-            if self.forceFixedRatio {
-                self.imageStatusChangedCheckForForceFixedRatio = true
-            }
+
             self.viewModel.setBetweenOperationStatus()
         }
         
@@ -647,23 +610,6 @@ extension CropView {
             return Double(image.ratioH())
         } else {
             return Double(1/image.ratioH())
-        }
-    }
-    
-    func transform(byTransformInfo transformation: Transformation) {
-        viewModel.setRotatingStatus(by: CGAngle(radians:transformation.rotation))
-
-        if (transformation.scrollBounds != .zero) {
-            scrollView.bounds = transformation.scrollBounds
-        }
-
-        manualZoomed = transformation.manualZoomed
-        scrollView.zoomScale = transformation.scale
-        scrollView.contentOffset = transformation.offset
-        viewModel.setBetweenOperationStatus()
-        
-        if (transformation.maskFrame != .zero) {
-            viewModel.cropBoxFrame = transformation.maskFrame
         }
     }
 }

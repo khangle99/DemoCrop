@@ -66,14 +66,10 @@ class CropViewModel: NSObject {
     var cropLeftTopOnImage: CGPoint = .zero
     var cropRightBottomOnImage: CGPoint = CGPoint(x: 1, y: 1)
     
-    func reset(forceFixedRatio: Bool = false) {
+    func reset() {
         cropBoxFrame = .zero
         degrees = 0
         rotationType = .none
-        
-        if forceFixedRatio == false {
-            aspectRatio = -1
-        }
         
         cropLeftTopOnImage = .zero
         cropRightBottomOnImage = CGPoint(x: 1, y: 1)
@@ -202,9 +198,6 @@ extension CropViewModel {
         viewStatus = .touchImage
     }
 
-    func setTouchRotationBoardStatus() {
-        viewStatus = .touchRotationBoard
-    }
 
     func setTouchCropboxHandleStatus() {
         viewStatus = .touchCropboxHandle(tappedEdge: tappedEdge)
