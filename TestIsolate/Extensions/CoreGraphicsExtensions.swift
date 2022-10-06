@@ -10,12 +10,6 @@ import UIKit
 
 extension FloatingPoint{
     var isBad:Bool{ return isNaN || isInfinite }
-    var checked:Self{
-        guard !isBad && !isInfinite else {
-            fatalError("bad number!")
-        }
-        return self
-    }
 }
 
 typealias Angle = CGFloat

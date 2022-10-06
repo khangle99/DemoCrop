@@ -28,30 +28,12 @@ public typealias Transformation = (
 public typealias CropInfo = (translation: CGPoint, rotation: CGFloat, scale: CGFloat, cropSize: CGSize, imageViewSize: CGSize)
 
 // MARK: - Enums
-public enum PresetTransformationType {
-    case none
-    case presetInfo(info: Transformation)
-    case presetNormalizedInfo(normailizedInfo: CGRect)
-}
-
-public enum PresetFixedRatioType {
-    /** When choose alwaysUsingOnePresetFixedRatio, fixed-ratio setting button does not show.
-     */
-    case alwaysUsingOnePresetFixedRatio(ratio: Double = 0)
-    case canUseMultiplePresetFixedRatio(defaultRatio: Double = 0)
-}
 
 public enum CropVisualEffectType {
     case blurDark
     case dark
     case light
     case none
-}
-
-
-public enum RatioCandidatesShowType {
-    case presentRatioList
-    case alwaysShowRatioList
 }
 
 public enum FixRatiosShowType {
@@ -67,7 +49,6 @@ public struct CropToolbarConfig {
     public var optionButtonFontSizeForPad: CGFloat = 20
     public var cropToolbarHeightForVertialOrientation: CGFloat = 44
     public var cropToolbarWidthForHorizontalOrientation: CGFloat = 80
-    public var ratioCandidatesShowType: RatioCandidatesShowType = .presentRatioList
     public var fixRatiosShowType: FixRatiosShowType = .adaptive
     public var toolbarButtonOptions: ToolbarButtonOptions = .all
     public var presetRatiosButtonSelected = false
@@ -78,10 +59,8 @@ public struct CropToolbarConfig {
 
 // MARK: - Config
 public struct Config {
-    public var presetTransformationType: PresetTransformationType = .none
     public var cropVisualEffectType: CropVisualEffectType = .blurDark
     public var ratioOptions: RatioOptions = .all
-    public var presetFixedRatioType: PresetFixedRatioType = .canUseMultiplePresetFixedRatio()
    
     public var cropToolbarConfig = CropToolbarConfig()
 
