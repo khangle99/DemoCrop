@@ -60,18 +60,15 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     private func createCounterClockwiseRotationButton() {
-        counterClockwiseRotationButton = createOptionButton(withTitle: nil, andAction: #selector(counterClockwiseRotate))
-        counterClockwiseRotationButton?.setImage(ToolBarButtonImageBuilder.rotateCCWImage(), for: .normal)
+        counterClockwiseRotationButton = createOptionButton(withTitle: "Rotate L", andAction: #selector(counterClockwiseRotate))
     }
 
     private func createClockwiseRotationButton() {
-        clockwiseRotationButton = createOptionButton(withTitle: nil, andAction: #selector(clockwiseRotate))
-        clockwiseRotationButton?.setImage(ToolBarButtonImageBuilder.rotateCWImage(), for: .normal)
+        clockwiseRotationButton = createOptionButton(withTitle: "Rotate R", andAction: #selector(clockwiseRotate))
     }
 
     private func createAlterCropper90DegreeButton() {
-        alterCropper90DegreeButton = createOptionButton(withTitle: nil, andAction: #selector(alterCropper90Degree))
-        alterCropper90DegreeButton?.setImage(ToolBarButtonImageBuilder.alterCropper90DegreeImage(), for: .normal)
+        alterCropper90DegreeButton = createOptionButton(withTitle: "alter90", andAction: #selector(alterCropper90Degree))
     }
 
     private func createResetButton(with image: UIImage? = nil) {
@@ -82,11 +79,6 @@ public class CropToolbar: UIView, CropToolbarProtocol {
             let resetText = "Reset"
             resetButton = createOptionButton(withTitle: resetText, andAction: #selector(reset))
         }
-    }
-
-    private func createSetRatioButton() {
-        fixedRatioSettingButton = createOptionButton(withTitle: nil, andAction: #selector(setRatio))
-        fixedRatioSettingButton?.setImage(ToolBarButtonImageBuilder.clampImage(), for: .normal)
     }
 
     private func createCropButton() {
@@ -157,21 +149,9 @@ public class CropToolbar: UIView, CropToolbarProtocol {
         }
 
         if config.toolbarButtonOptions.contains(.reset) {
-            createResetButton(with: ToolBarButtonImageBuilder.resetImage())
+            createResetButton(with: nil)
             addButtonsToContainer(button: resetButton)
             resetButton?.isHidden = true
-        }
-
-        if config.toolbarButtonOptions.contains(.ratio) && config.ratioCandidatesShowType == .presentRatioList {
-            if config.includeFixedRatioSettingButton {
-                createSetRatioButton()
-                addButtonsToContainer(button: fixedRatioSettingButton)
-
-                if config.presetRatiosButtonSelected {
-                    handleFixedRatioSetted(ratio: 0)
-                    resetButton?.isHidden = false
-                }
-            }
         }
 
         if config.mode == .normal {
@@ -216,10 +196,6 @@ public class CropToolbar: UIView, CropToolbarProtocol {
 
     @objc private func cancel() {
         cropToolbarDelegate?.didSelectCancel()
-    }
-
-    @objc private func setRatio() {
-        cropToolbarDelegate?.didSelectSetRatio()
     }
 
     @objc private func reset(_ sender: Any) {

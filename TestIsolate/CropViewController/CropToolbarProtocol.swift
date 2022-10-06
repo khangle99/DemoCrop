@@ -13,8 +13,6 @@ public protocol CropToolbarDelegate: AnyObject {
     func didSelectCounterClockwiseRotate()
     func didSelectClockwiseRotate()
     func didSelectReset()
-    func didSelectSetRatio()
-    func didSelectRatio(ratio: Double)
     func didSelectAlterCropper90Degree()
 }
 

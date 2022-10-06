@@ -19,7 +19,6 @@ let cropViewPadding:CGFloat = 14.0
 
 class CropView: UIView {
 
-    var cropShapeType: CropShapeType = .rect
     var cropVisualEffectType: CropVisualEffectType = .blurDark
     var angleDashboardHeight: CGFloat = 60
     
@@ -45,7 +44,6 @@ class CropView: UIView {
     lazy var scrollView = CropScrollView(frame: bounds)
     lazy var cropMaskViewManager = CropMaskViewManager(with: self,
                                                        cropRatio: CGFloat(getImageRatioH()),
-                                                       cropShapeType: cropShapeType,
                                                        cropVisualEffectType: cropVisualEffectType)
 
     var manualZoomed = false
@@ -499,34 +497,7 @@ extension CropView {
             return (nil, transformation, cropInfo)
         }
         
-        switch cropShapeType {
-        case .rect,
-             .square,
-             .circle(maskOnly: true),
-             .roundedRect(_, maskOnly: true),
-             .path(_, maskOnly: true),
-             .diamond(maskOnly: true),
-             .heart(maskOnly: true),
-             .polygon(_, _, maskOnly: true):
-            return (croppedImage, transformation, cropInfo)
-        case .ellipse:
-            return (croppedImage.ellipseMasked, transformation, cropInfo)
-        case .circle:
-            return (croppedImage.ellipseMasked, transformation, cropInfo)
-        case .roundedRect(let radiusToShortSide, maskOnly: false):
-            let radius = min(croppedImage.size.width, croppedImage.size.height) * radiusToShortSide
-            return (croppedImage.roundRect(radius), transformation, cropInfo)
-        case .path(let points, maskOnly: false):
-            return (croppedImage.clipPath(points), transformation, cropInfo)
-        case .diamond(maskOnly: false):
-            let points = [CGPoint(x: 0.5, y: 0), CGPoint(x: 1, y: 0.5), CGPoint(x: 0.5, y: 1), CGPoint(x: 0, y: 0.5)]
-            return (croppedImage.clipPath(points), transformation, cropInfo)
-        case .heart(maskOnly: false):
-            return (croppedImage.heart, transformation, cropInfo)
-        case .polygon(let sides, let offset, maskOnly: false):
-            let points = polygonPointArray(sides: sides, originX: 0.5, originY: 0.5, radius: 0.5, offset: 90 + offset)
-            return (croppedImage.clipPath(points), transformation, cropInfo)
-        }
+        return (croppedImage, transformation, cropInfo)
     }
     
     func getCropInfo() -> CropInfo {

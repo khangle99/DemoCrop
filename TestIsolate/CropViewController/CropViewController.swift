@@ -41,7 +41,6 @@ public class CropViewController: UIViewController {
     private var orientation: UIDeviceOrientation?
     private lazy var cropView = CropView(image: image, viewModel: CropViewModel())
     private var cropToolbar: CropToolbarProtocol
-    private var ratioPresenter: RatioPresenter?
     private var ratioSelector: RatioSelector?
     private var stackView: UIStackView?
     private var cropStackView: UIStackView!
@@ -59,13 +58,6 @@ public class CropViewController: UIViewController {
         self.image = image
         
         self.config = config
-
-        switch config.cropShapeType {
-        case .circle, .square, .heart:
-            self.config.presetFixedRatioType = .alwaysUsingOnePresetFixedRatio(ratio: 1)
-        default:
-            ()
-        }
         
         self.mode = mode
         self.cropToolbar = cropToolbar
@@ -150,9 +142,7 @@ public class CropViewController: UIViewController {
         
         createCropView()
         createCropToolbar()
-        if config.cropToolbarConfig.ratioCandidatesShowType == .alwaysShowRatioList && config.cropToolbarConfig.includeFixedRatioSettingButton {
-            createRatioSelector()
-        }
+        createRatioSelector()
         initLayout()
         updateLayout()
     }
@@ -221,12 +211,8 @@ public class CropViewController: UIViewController {
     }
     
     private func createCropView() {
-        if !config.showRotationDial {
-            cropView.angleDashboardHeight = 0
-        }
         cropView.delegate = self
         cropView.clipsToBounds = true
-        cropView.cropShapeType = config.cropShapeType
         cropView.cropVisualEffectType = config.cropVisualEffectType
         
         if case .alwaysUsingOnePresetFixedRatio = config.presetFixedRatioType {
@@ -371,14 +357,7 @@ public class CropViewController: UIViewController {
             return
         }
         
-        ratioPresenter = RatioPresenter(type: fixedRatioManager.type,
-                                        originalRatioH: fixedRatioManager.originalRatioH,
-                                        ratios: fixedRatioManager.ratios,
-                                        fixRatiosShowType: config.cropToolbarConfig.fixRatiosShowType)
-        ratioPresenter?.didGetRatio = {[weak self] ratio in
-            self?.setFixedRatio(ratio, zoom: false)
-        }
-        ratioPresenter?.present(by: self, in: presentSourceView)
+
     }
     
     private func handleReset() {

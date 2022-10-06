@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "167FFFEC-1324-4779-9615-919AEC187E7C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestIsolate/ViewController.swift"
@@ -17,7 +17,7 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "cropViewControllerDidCrop(_:cropped:transformation:cropInfo:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

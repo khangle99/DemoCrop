@@ -38,7 +38,6 @@
 		1A119BEC28EDE55C0088F9CB /* CropToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BE428EDE55C0088F9CB /* CropToolbar.swift */; };
 		1A119BED28EDE55C0088F9CB /* RatioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BE528EDE55C0088F9CB /* RatioPresenter.swift */; };
 		1A119BEE28EDE55C0088F9CB /* FixedRatioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BE628EDE55C0088F9CB /* FixedRatioManager.swift */; };
-		1A119BEF28EDE55C0088F9CB /* ToolBarButtonImageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BE728EDE55C0088F9CB /* ToolBarButtonImageBuilder.swift */; };
 		1A119BF028EDE55C0088F9CB /* RatioSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BE828EDE55C0088F9CB /* RatioSelector.swift */; };
 		1A119BF128EDE55C0088F9CB /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BE928EDE55C0088F9CB /* CropViewController.swift */; };
 		1A119BF228EDE55C0088F9CB /* RatioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BEA28EDE55C0088F9CB /* RatioItemView.swift */; };
@@ -79,7 +78,6 @@
 		1A119BE428EDE55C0088F9CB /* CropToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropToolbar.swift; sourceTree = "<group>"; };
 		1A119BE528EDE55C0088F9CB /* RatioPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioPresenter.swift; sourceTree = "<group>"; };
 		1A119BE628EDE55C0088F9CB /* FixedRatioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedRatioManager.swift; sourceTree = "<group>"; };
-		1A119BE728EDE55C0088F9CB /* ToolBarButtonImageBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarButtonImageBuilder.swift; sourceTree = "<group>"; };
 		1A119BE828EDE55C0088F9CB /* RatioSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioSelector.swift; sourceTree = "<group>"; };
 		1A119BE928EDE55C0088F9CB /* CropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
 		1A119BEA28EDE55C0088F9CB /* RatioItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioItemView.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				1A119BE428EDE55C0088F9CB /* CropToolbar.swift */,
 				1A119BE528EDE55C0088F9CB /* RatioPresenter.swift */,
 				1A119BE628EDE55C0088F9CB /* FixedRatioManager.swift */,
-				1A119BE728EDE55C0088F9CB /* ToolBarButtonImageBuilder.swift */,
 				1A119BE828EDE55C0088F9CB /* RatioSelector.swift */,
 				1A119BE928EDE55C0088F9CB /* CropViewController.swift */,
 				1A119BEA28EDE55C0088F9CB /* RatioItemView.swift */,
@@ -279,7 +276,6 @@
 				1A119BF128EDE55C0088F9CB /* CropViewController.swift in Sources */,
 				1A119BC328EDE3F90088F9CB /* RatioOptions.swift in Sources */,
 				1A119BDE28EDE5350088F9CB /* CGAngel.swift in Sources */,
-				1A119BEF28EDE55C0088F9CB /* ToolBarButtonImageBuilder.swift in Sources */,
 				1A119BCA28EDE4EE0088F9CB /* CropVisualEffectView.swift in Sources */,
 				1A119BB428EDE3120088F9CB /* CropView.swift in Sources */,
 				1A119BD328EDE50D0088F9CB /* CoreGraphicsExtensions.swift in Sources */,

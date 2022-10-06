@@ -11,7 +11,6 @@ fileprivate let minOverLayerUnit: CGFloat = 30
 fileprivate let initialFrameLength: CGFloat = 1000
 
 protocol CropMaskProtocol where Self: UIView {
-    var cropShapeType: CropShapeType { get set }
     var innerLayer: CALayer? { get set }
     
     func initialize(cropRatio: CGFloat)
@@ -40,14 +39,7 @@ extension CropMaskProtocol {
     func adaptMaskTo(match cropRect: CGRect, cropRatio: CGFloat) {
         let scaleX: CGFloat
         
-        switch cropShapeType {
-        case .roundedRect:
-            innerLayer?.removeFromSuperlayer()
-            setMask(cropRatio: cropRatio)
-            scaleX = cropRect.width / (minOverLayerUnit * cropRatio)
-        default:
-            scaleX = cropRect.width / minOverLayerUnit
-        }
+        scaleX = cropRect.width / minOverLayerUnit
                 
         let scaleY = cropRect.height / minOverLayerUnit
 
@@ -58,13 +50,7 @@ extension CropMaskProtocol {
     }
     
     func createOverLayer(opacity: Float, cropRatio: CGFloat = 1.0) -> CAShapeLayer {
-        let coff: CGFloat
-        switch cropShapeType {
-        case .roundedRect:
-            coff = cropRatio
-        default:
-            coff = 1
-        }
+        let coff: CGFloat = 1
         
         let originX = bounds.midX - minOverLayerUnit * coff / 2
         let originY = bounds.midY - minOverLayerUnit / 2
@@ -91,25 +77,7 @@ extension CropMaskProtocol {
             return innerPath
         }
                 
-        switch cropShapeType {
-        case .rect, .square:
-            innerPath = UIBezierPath(rect: initialRect)
-        case .ellipse, .circle:
-            innerPath = UIBezierPath(ovalIn: initialRect)
-        case .roundedRect(let radiusToShortSide, _):
-            let radius = min(initialRect.width, initialRect.height) * radiusToShortSide
-            innerPath = UIBezierPath(roundedRect: initialRect, cornerRadius: radius)
-        case .diamond:
-            let points = [CGPoint(x: 0.5, y: 0), CGPoint(x: 1, y: 0.5), CGPoint(x: 0.5, y: 1), CGPoint(x: 0, y: 0.5)]
-            innerPath = getInnerPath(by: points)
-        case .path(let points, _):
-            innerPath = getInnerPath(by: points)
-        case .heart:
-            innerPath = UIBezierPath(heartIn: initialRect)
-        case .polygon(let sides, let offset, _):
-            let points = polygonPointArray(sides: sides, originX: 0.5, originY: 0.5, radius: 0.5, offset: 90 + offset)
-            innerPath = getInnerPath(by: points)
-        }
+        innerPath = UIBezierPath(rect: initialRect)
                 
         path.append(innerPath)
         path.usesEvenOddFillRule = true
