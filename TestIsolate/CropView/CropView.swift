@@ -100,9 +100,6 @@ class CropView: UIView {
         switch viewStatus {
         case .initial:
             initalRender()
-        case .rotating(let angle):
-            viewModel.degrees = angle.degrees
-            rotateScrollView()
         case .degree90Rotating:
             cropMaskViewManager.showVisualEffectBackground()
             gridOverlayView.isHidden = true

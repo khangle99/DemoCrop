@@ -7,17 +7,6 @@
 
 import UIKit
 
-enum CropViewOverlayEdge {
-    case none
-    case topLeft
-    case top
-    case topRight
-    case right
-    case bottomRight
-    case bottom
-    case bottomLeft
-    case left
-}
 
 struct GeometryHelper {
     static func getInscribeRect(fromOutsideRect outsideRect: CGRect, andInsideRect insideRect: CGRect) -> CGRect {

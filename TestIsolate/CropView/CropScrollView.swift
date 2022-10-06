@@ -12,7 +12,6 @@ class CropScrollView: UIScrollView {
     weak var imageContainer: ImageContainer?
     
     var touchesBegan = {}
-    var touchesCancelled = {}
     var touchesEnded = {}
     
     override init(frame: CGRect) {
@@ -35,11 +34,6 @@ class CropScrollView: UIScrollView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         touchesBegan()
-        super.touchesBegan(touches, with: event)
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        touchesCancelled()
         super.touchesBegan(touches, with: event)
     }
     

@@ -7,14 +7,26 @@
 
 import UIKit
 
+enum CropViewOverlayEdge {
+    case none
+    case topLeft
+    case top
+    case topRight
+    case right
+    case bottomRight
+    case bottom
+    case bottomLeft
+    case left
+}
+
 class CropOverlayView: UIView {
     private var boarderNormalColor = UIColor.white
     private var boarderHintColor = UIColor.white
-    private var hintLine = UIView()
+    private var hintLine = UIView() // line khi touch
     private var tappedEdge: CropViewOverlayEdge = .none
     
     var gridHidden = true
-    var gridColor = UIColor(white: 0.8, alpha: 1)
+    private var gridColor = UIColor(white: 0.8, alpha: 1)
     
     private let cropOverLayerCornerWidth = CGFloat(20.0)
     
@@ -32,7 +44,7 @@ class CropOverlayView: UIView {
     private let hineLineThickness = CGFloat(2.0)
     
     override var frame: CGRect {
-        didSet {
+        didSet {  // update crop overlay khi frame thay doi
             if !corners.isEmpty {
                 layoutLines()
                 handleEdgeTouched(with: tappedEdge)
@@ -65,6 +77,7 @@ class CropOverlayView: UIView {
         borderLine.layer.borderColor = boarderNormalColor.cgColor
         
         for _ in 0..<8 {
+            // init corner
             corners.append(createNewLine())
         }
         
@@ -185,10 +198,6 @@ class CropOverlayView: UIView {
         } else {
             setGridLinesShowStatus()
         }
-    }
-    
-    func hideGrid() {
-        gridLineNumberType = .none
     }
     
     func handleEdgeTouched(with tappedEdge: CropViewOverlayEdge) {
