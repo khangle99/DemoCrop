@@ -42,6 +42,15 @@
 		1A119BF128EDE55C0088F9CB /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BE928EDE55C0088F9CB /* CropViewController.swift */; };
 		1A119BF228EDE55C0088F9CB /* RatioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BEA28EDE55C0088F9CB /* RatioItemView.swift */; };
 		1A119BF328EDE55C0088F9CB /* CropToolbarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BEB28EDE55C0088F9CB /* CropToolbarProtocol.swift */; };
+		1A119BFF28EF38C20088F9CB /* CalcuteFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BFA28EF38C20088F9CB /* CalcuteFunctions.swift */; };
+		1A119C0028EF38C20088F9CB /* AdjustToFitFontOrWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BFB28EF38C20088F9CB /* AdjustToFitFontOrWidth.swift */; };
+		1A119C0128EF38C20088F9CB /* JLStickerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BFC28EF38C20088F9CB /* JLStickerImageView.swift */; };
+		1A119C0228EF38C20088F9CB /* JLAttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BFD28EF38C20088F9CB /* JLAttributedTextView.swift */; };
+		1A119C0328EF38C20088F9CB /* JLStickerLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119BFE28EF38C20088F9CB /* JLStickerLabelView.swift */; };
+		1A119C0628EF39440088F9CB /* DrawTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119C0428EF39440088F9CB /* DrawTextViewController.swift */; };
+		1A119C0728EF39440088F9CB /* DrawTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A119C0528EF39440088F9CB /* DrawTextViewController.xib */; };
+		1A119C0B28EFCC490088F9CB /* SelectFontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119C0928EFCC490088F9CB /* SelectFontViewController.swift */; };
+		1A119C0C28EFCC490088F9CB /* SelectFontViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A119C0A28EFCC490088F9CB /* SelectFontViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +91,15 @@
 		1A119BE928EDE55C0088F9CB /* CropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
 		1A119BEA28EDE55C0088F9CB /* RatioItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioItemView.swift; sourceTree = "<group>"; };
 		1A119BEB28EDE55C0088F9CB /* CropToolbarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropToolbarProtocol.swift; sourceTree = "<group>"; };
+		1A119BFA28EF38C20088F9CB /* CalcuteFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcuteFunctions.swift; sourceTree = "<group>"; };
+		1A119BFB28EF38C20088F9CB /* AdjustToFitFontOrWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustToFitFontOrWidth.swift; sourceTree = "<group>"; };
+		1A119BFC28EF38C20088F9CB /* JLStickerImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLStickerImageView.swift; sourceTree = "<group>"; };
+		1A119BFD28EF38C20088F9CB /* JLAttributedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAttributedTextView.swift; sourceTree = "<group>"; };
+		1A119BFE28EF38C20088F9CB /* JLStickerLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLStickerLabelView.swift; sourceTree = "<group>"; };
+		1A119C0428EF39440088F9CB /* DrawTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawTextViewController.swift; sourceTree = "<group>"; };
+		1A119C0528EF39440088F9CB /* DrawTextViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawTextViewController.xib; sourceTree = "<group>"; };
+		1A119C0928EFCC490088F9CB /* SelectFontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFontViewController.swift; sourceTree = "<group>"; };
+		1A119C0A28EFCC490088F9CB /* SelectFontViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectFontViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +132,12 @@
 		1A119B8F28EDE2450088F9CB /* TestIsolate */ = {
 			isa = PBXGroup;
 			children = (
+				1A119C0828EF39E90088F9CB /* DrawingText */,
 				1A119BD728EDE5350088F9CB /* CGAngel.swift */,
 				1A119BE328EDE55C0088F9CB /* CropViewController */,
-				1A119BCD28EDE50D0088F9CB /* Extensions */,
 				1A119BC228EDE3F90088F9CB /* RatioOptions.swift */,
 				1A119BC028EDE3B50088F9CB /* DGCropImage.swift */,
 				1A119BBB28EDE34E0088F9CB /* Helpers */,
-				1A119BA428EDE2D60088F9CB /* CropView */,
 				1A119B9028EDE2450088F9CB /* AppDelegate.swift */,
 				1A119B9228EDE2450088F9CB /* SceneDelegate.swift */,
 				1A119B9428EDE2450088F9CB /* ViewController.swift */,
@@ -181,6 +198,7 @@
 		1A119BE328EDE55C0088F9CB /* CropViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1A119BCD28EDE50D0088F9CB /* Extensions */,
 				1A119BF828EEA4920088F9CB /* Views */,
 				1A119BE528EDE55C0088F9CB /* RatioType.swift */,
 				1A119BE628EDE55C0088F9CB /* FixedRatioManager.swift */,
@@ -212,10 +230,35 @@
 		1A119BF828EEA4920088F9CB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1A119BA428EDE2D60088F9CB /* CropView */,
 				1A119BE828EDE55C0088F9CB /* RatioSelector.swift */,
 				1A119BF728EEA4660088F9CB /* CropToobar */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1A119BF928EF389E0088F9CB /* StickerTextView */ = {
+			isa = PBXGroup;
+			children = (
+				1A119BFB28EF38C20088F9CB /* AdjustToFitFontOrWidth.swift */,
+				1A119BFA28EF38C20088F9CB /* CalcuteFunctions.swift */,
+				1A119BFD28EF38C20088F9CB /* JLAttributedTextView.swift */,
+				1A119BFC28EF38C20088F9CB /* JLStickerImageView.swift */,
+				1A119BFE28EF38C20088F9CB /* JLStickerLabelView.swift */,
+			);
+			path = StickerTextView;
+			sourceTree = "<group>";
+		};
+		1A119C0828EF39E90088F9CB /* DrawingText */ = {
+			isa = PBXGroup;
+			children = (
+				1A119BF928EF389E0088F9CB /* StickerTextView */,
+				1A119C0428EF39440088F9CB /* DrawTextViewController.swift */,
+				1A119C0528EF39440088F9CB /* DrawTextViewController.xib */,
+				1A119C0928EFCC490088F9CB /* SelectFontViewController.swift */,
+				1A119C0A28EFCC490088F9CB /* SelectFontViewController.xib */,
+			);
+			path = DrawingText;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,7 +320,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A119B9D28EDE2470088F9CB /* LaunchScreen.storyboard in Resources */,
+				1A119C0728EF39440088F9CB /* DrawTextViewController.xib in Resources */,
 				1A119B9A28EDE2470088F9CB /* Assets.xcassets in Resources */,
+				1A119C0C28EFCC490088F9CB /* SelectFontViewController.xib in Resources */,
 				1A119B9828EDE2450088F9CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,12 +341,16 @@
 				1A119BB428EDE3120088F9CB /* CropView.swift in Sources */,
 				1A119BD328EDE50D0088F9CB /* CoreGraphicsExtensions.swift in Sources */,
 				1A119BF028EDE55C0088F9CB /* RatioSelector.swift in Sources */,
+				1A119C0628EF39440088F9CB /* DrawTextViewController.swift in Sources */,
 				1A119BD228EDE50D0088F9CB /* UIImageExtensions.swift in Sources */,
+				1A119C0028EF38C20088F9CB /* AdjustToFitFontOrWidth.swift in Sources */,
 				1A119BB928EDE3120088F9CB /* ImageContainer.swift in Sources */,
 				1A119BBA28EDE3120088F9CB /* CropMaskViewManager.swift in Sources */,
 				1A119BF328EDE55C0088F9CB /* CropToolbarProtocol.swift in Sources */,
 				1A119BB628EDE3120088F9CB /* CropOverlayView.swift in Sources */,
 				1A119B9528EDE2450088F9CB /* ViewController.swift in Sources */,
+				1A119C0328EF38C20088F9CB /* JLStickerLabelView.swift in Sources */,
+				1A119C0B28EFCC490088F9CB /* SelectFontViewController.swift in Sources */,
 				1A119BED28EDE55C0088F9CB /* RatioType.swift in Sources */,
 				1A119BCC28EDE4EE0088F9CB /* CropMaskProtocol.swift in Sources */,
 				1A119BEC28EDE55C0088F9CB /* CropToolbar.swift in Sources */,
@@ -311,16 +360,19 @@
 				1A119BBD28EDE34E0088F9CB /* GeometryHelper.swift in Sources */,
 				1A119B9128EDE2450088F9CB /* AppDelegate.swift in Sources */,
 				1A119B9328EDE2450088F9CB /* SceneDelegate.swift in Sources */,
+				1A119C0228EF38C20088F9CB /* JLAttributedTextView.swift in Sources */,
 				1A119BB728EDE3120088F9CB /* CropViewModel.swift in Sources */,
 				1A119BB828EDE3120088F9CB /* CropViewStatus.swift in Sources */,
 				1A119BB528EDE3120088F9CB /* CropView+UIScrollViewDelegate.swift in Sources */,
 				1A119BB228EDE3120088F9CB /* CropScrollView.swift in Sources */,
+				1A119C0128EF38C20088F9CB /* JLStickerImageView.swift in Sources */,
 				1A119BD128EDE50D0088F9CB /* CGImageExtensions.swift in Sources */,
 				1A119BA828EDE2FB0088F9CB /* CropBoxFreeAspectFrameUpdater.swift in Sources */,
 				1A119BC128EDE3B50088F9CB /* DGCropImage.swift in Sources */,
 				1A119BC528EDE40F0088F9CB /* ToolbarButtonOptions.swift in Sources */,
 				1A119BA728EDE2FB0088F9CB /* CropBoxLockedAspectFrameUpdater.swift in Sources */,
 				1A119BB328EDE3120088F9CB /* CropView+Touches.swift in Sources */,
+				1A119BFF28EF38C20088F9CB /* CalcuteFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

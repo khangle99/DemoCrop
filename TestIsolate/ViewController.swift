@@ -29,7 +29,7 @@ extension ViewController: CropViewControllerDelegate {
     }
     
     func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation, cropInfo: CropInfo) {
-        print("00")
+        print("didCrop")
     }
 }
 

@@ -79,7 +79,7 @@ class CropView: UIView {
                 cropRatio = self.gridOverlayView.frame.width / self.gridOverlayView.frame.height
             }
             
-            self.cropMaskViewManager.adaptMaskTo(match: cropFrame, cropRatio: cropRatio)
+            self.cropMaskViewManager.adaptMaskTo(match: cropFrame, cropRatio: cropRatio) // adapt mask chho
         }
         
         initalRender()
@@ -96,7 +96,6 @@ class CropView: UIView {
     
     private func render(by viewStatus: CropViewStatus) {
         gridOverlayView.isHidden = false
-        print(viewStatus)
         switch viewStatus {
         case .initial:
             initalRender()

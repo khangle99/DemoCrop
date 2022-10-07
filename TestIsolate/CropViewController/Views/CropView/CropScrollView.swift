@@ -48,10 +48,12 @@ class CropScrollView: UIScrollView {
         
         if contentSize.height - contentOffset.y <= bounds.size.height {
             contentOffset.y = contentSize.height - bounds.size.height
+            print("====y: \(contentOffset.y)")
         }
         
         if contentSize.width - contentOffset.x <= bounds.size.width {
             contentOffset.x = contentSize.width - bounds.size.width
+            print("====x: \(contentOffset.x)")
         }
     }
     
@@ -62,7 +64,7 @@ class CropScrollView: UIScrollView {
         
         let scaleW = bounds.width / imageContainer.bounds.width
         let scaleH = bounds.height / imageContainer.bounds.height
-        
+        print(max(scaleW, scaleH))
         return max(scaleW, scaleH)
     }
     

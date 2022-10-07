@@ -94,8 +94,8 @@ public class CropViewController: UIViewController {
         }
     }
     
-    fileprivate func getFixedRatioManager() -> FixedRatioManager {
-        let type: RatioType = getRatioType()
+    fileprivate func getFixedRatioManager(forceType: RatioType? = nil) -> FixedRatioManager {
+        let type: RatioType = forceType ?? getRatioType()
         
         let ratio = cropView.getImageRatioH()
         
@@ -110,11 +110,24 @@ public class CropViewController: UIViewController {
         
         view.backgroundColor = .black
         
+        
+        setupNavigationBar()
         createCropView()
         createCropToolbar()
         createRatioSelector()
         initLayout()
         updateLayout()
+    }
+    
+    private func setupNavigationBar() {
+        let addTextItem = UIBarButtonItem(title: "Add Text", style: .plain, target: self, action: #selector(gotoAddTextScreen))
+        navigationItem.rightBarButtonItem = addTextItem
+    }
+    
+    @objc func gotoAddTextScreen() {
+        let vc = DrawTextViewController()
+        vc.image = image
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override public func viewDidLayoutSubviews() {
@@ -214,9 +227,12 @@ public class CropViewController: UIViewController {
         let ratio = Double(cropView.gridOverlayView.frame.height / cropView.gridOverlayView.frame.width)
         
         cropView.viewModel.aspectRatio = CGFloat(ratio)
+        let orientation: RatioType = ratio > 1 ? .horizontal : .vertical
         
         UIView.animate(withDuration: 0.5) {
             self.cropView.setFixedRatioCropBox()
+            
+           // self.ratioSelector?.update(fixedRatioManager: self.getFixedRatioManager(forceType: orientation))
         }
     }
     
