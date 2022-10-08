@@ -11,6 +11,7 @@ class DrawTextViewController: UIViewController {
     
     @IBOutlet weak var stickerImageView: JLStickerImageView!
     var image: UIImage?
+    private var textColor: UIColor = .red
     
     @IBOutlet weak var formatView: UIView!
     
@@ -44,7 +45,13 @@ class DrawTextViewController: UIViewController {
     }
     
     @IBAction func selectColorTap(_ sender: Any) {
-        print("Select color")
+        let config = ColorPickerConfiguration(color: .red)
+        config.visibleTabs = [.map, .swatch, .sliders]
+        config.overrideSmartInvert = true
+       
+        let vc = ColorPickerViewController(configuration: config)
+        vc.delegate = self
+        present(vc, animated: true)
     }
     
     @IBAction func aligmentDidChange(_ sender: UISegmentedControl) {
@@ -67,6 +74,12 @@ class DrawTextViewController: UIViewController {
 extension DrawTextViewController: SelectFontViewControllerDelegate {
     func didSelect(_ font: UIFont) {
         stickerImageView.fontName = font.fontName
+    }
+}
+
+extension DrawTextViewController: ColorPickerDelegate {
+    func colorPicker(_ colorPicker: ColorPickerViewController, didAccept color: UIColor) {
+        stickerImageView.textColor = color
     }
 }
 
