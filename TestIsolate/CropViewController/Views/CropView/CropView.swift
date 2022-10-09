@@ -287,20 +287,19 @@ extension CropView {
         let rect = self.bounds
         var contentRect = CGRect.zero
         
-        let orientation = UIDevice.current.orientation
-        
-        if orientation == .portrait {
+        let isLandscape = UIApplication.shared.statusBarOrientation.isLandscape
+        if !isLandscape {
             contentRect.origin.x = rect.origin.x + cropViewPadding
             contentRect.origin.y = rect.origin.y + cropViewPadding
             
             contentRect.size.width = rect.width - 2 * cropViewPadding
             contentRect.size.height = rect.height - 2 * cropViewPadding - angleDashboardHeight
-        } else if orientation == .landscapeLeft || orientation == .landscapeRight {
+        } else {
             contentRect.size.width = rect.width - 2 * cropViewPadding - angleDashboardHeight
             contentRect.size.height = rect.height - 2 * cropViewPadding
             
             contentRect.origin.y = rect.origin.y + cropViewPadding
-            if orientation == .landscapeLeft {
+            if isLandscape {
                 contentRect.origin.x = rect.origin.x + cropViewPadding
             } else {
                 contentRect.origin.x = rect.origin.x + cropViewPadding + angleDashboardHeight

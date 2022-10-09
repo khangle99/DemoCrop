@@ -10,7 +10,7 @@ import UIKit
 
 protocol JLStickerImageViewDelegate: AnyObject {
     func didTapOutside()
-    func didTapEditingLabel()
+    func didTapEditingLabel(_ label: JLStickerLabelView)
 }
 
 public class JLStickerImageView: UIImageView, UIGestureRecognizerDelegate {
@@ -149,8 +149,12 @@ extension JLStickerImageView {
             if let textView = labelView.labelTextView, textView.text.isEmpty {
                 labelView.removeFromSuperview()
             }
-            delegate?.didTapOutside()
+           
         }
+        labels.forEach { label in
+            label.hideEditingHandlers()
+        }
+        delegate?.didTapOutside()
         
     }
 }
@@ -160,43 +164,46 @@ extension JLStickerImageView {
 extension JLStickerImageView: JLStickerLabelViewDelegate {
     public func labelViewDidBeginEditing(_ label: JLStickerLabelView) {
         //labels.removeObject(label)
-        
+        print("labelViewDidBeginEditing")
     }
     
     public func labelViewDidClose(_ label: JLStickerLabelView) {
-        
+        print("labelViewDidClose")
     }
     
     public func labelViewDidShowEditingHandles(_ label: JLStickerLabelView) {
         currentlyEditingLabel = label
-        
+        //print("labelViewDidShowEditingHandles")
     }
     
     public func labelViewDidHideEditingHandles(_ label: JLStickerLabelView) {
         currentlyEditingLabel = nil
-        
+       // print("labelViewDidHideEditingHandles")
     }
     
     public func labelViewDidStartEditing(_ label: JLStickerLabelView) {
         currentlyEditingLabel = label
-        
+        print("labelViewDidStartEditing")
     }
     
     public func labelViewDidChangeEditing(_ label: JLStickerLabelView) {
-        
+        print("labelViewDidChangeEditing")
     }
     
     public func labelViewDidEndEditing(_ label: JLStickerLabelView) {
         
-        
+        print("labelViewDidEndEditing")
     }
     
     public func labelViewDidSelected(_ label: JLStickerLabelView) {
         for labelItem in labels {
-            labelItem.hideEditingHandlers()
+            if labelItem !== label {
+                labelItem.hideEditingHandlers()
+            }
+            
         }
-        label.showEditingHandles()
-        delegate?.didTapEditingLabel()
+        //label.showEditingHandles()
+        //delegate?.didTapEditingLabel(label)
     }
     
 }

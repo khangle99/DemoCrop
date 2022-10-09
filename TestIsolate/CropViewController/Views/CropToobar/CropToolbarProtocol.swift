@@ -49,7 +49,7 @@ public extension CropToolbarProtocol {
     
     func adjustLayoutConstraintsWhenOrientationChange() {
         
-        if UIDevice.current.orientation == .portrait {
+        if !UIApplication.shared.isLandscape {
             heightForVerticalOrientationConstraint?.isActive = true
             widthForHorizonOrientationConstraint?.isActive = false
         } else {

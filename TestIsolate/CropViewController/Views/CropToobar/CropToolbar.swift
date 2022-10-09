@@ -52,11 +52,23 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     private func createCounterClockwiseRotationButton() {
-        counterClockwiseRotationButton = createOptionButton(withTitle: "Rotate L", andAction: #selector(counterClockwiseRotate))
+        counterClockwiseRotationButton = createOptionButton(withTitle: nil, andAction: #selector(counterClockwiseRotate))
+        counterClockwiseRotationButton?.setImage(UIImage(named: "rotate_left"), for: .normal)
+        counterClockwiseRotationButton?.imageView?.contentMode = .scaleAspectFit
+        NSLayoutConstraint.activate([
+            counterClockwiseRotationButton!.widthAnchor.constraint(equalToConstant: 50),
+            counterClockwiseRotationButton!.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 
     private func createClockwiseRotationButton() {
-        clockwiseRotationButton = createOptionButton(withTitle: "Rotate R", andAction: #selector(clockwiseRotate))
+        clockwiseRotationButton = createOptionButton(withTitle: nil, andAction: #selector(clockwiseRotate))
+        clockwiseRotationButton?.setImage(UIImage(named: "rotate_right"), for: .normal)
+        clockwiseRotationButton?.imageView?.contentMode = .scaleAspectFit
+        NSLayoutConstraint.activate([
+            clockwiseRotationButton!.widthAnchor.constraint(equalToConstant: 50),
+            clockwiseRotationButton!.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 
     private func createAlterCropper90DegreeButton() {
@@ -81,7 +93,7 @@ public class CropToolbar: UIView, CropToolbarProtocol {
         optionButtonStackView = UIStackView()
         addSubview(optionButtonStackView!)
 
-        optionButtonStackView?.distribution = .equalCentering
+        optionButtonStackView?.distribution = .equalSpacing
         optionButtonStackView?.isLayoutMarginsRelativeArrangement = true
     }
 
@@ -149,7 +161,7 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     public func respondToOrientationChange() {
-        if UIDevice.current.orientation == .portrait {
+        if !UIApplication.shared.isLandscape {
             optionButtonStackView?.axis = .horizontal
             optionButtonStackView?.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         } else {

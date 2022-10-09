@@ -278,7 +278,7 @@ extension JLStickerLabelView: UIGestureRecognizerDelegate, AdjustFontSizeToFillR
             self.showEditingHandles()
             
             if let delegate: JLStickerLabelViewDelegate = delegate {
-                delegate.labelViewDidSelected!(self)
+                //delegate.labelViewDidSelected!(self)
             }
         }
         
@@ -404,6 +404,7 @@ extension JLStickerLabelView: UIGestureRecognizerDelegate, AdjustFontSizeToFillR
 extension JLStickerLabelView {
     private func setupLabelTextView() {
         labelTextView = JLAttributedTextView(frame: self.bounds.insetBy(dx: globalInset!, dy: globalInset!))
+        labelTextView?.isUserInteractionEnabled = false
         labelTextView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         labelTextView?.clipsToBounds = true
         labelTextView?.delegate = self
@@ -475,6 +476,7 @@ extension JLStickerLabelView {
     }
     
     public func hideEditingHandlers() {
+        labelTextView?.isUserInteractionEnabled = false
         lastTouchedView = nil
         
         isShowingEditingHandles = false
@@ -498,6 +500,7 @@ extension JLStickerLabelView {
     }
     
     public func showEditingHandles() {
+        labelTextView?.isUserInteractionEnabled = true
         lastTouchedView?.hideEditingHandlers()
         
         isShowingEditingHandles = true

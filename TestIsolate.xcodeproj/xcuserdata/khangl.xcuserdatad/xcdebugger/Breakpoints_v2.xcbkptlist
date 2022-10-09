@@ -7,145 +7,237 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D1D6BF0A-DCE6-4C5E-AA1E-677E9877D763"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestIsolate/CropView/CropViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "setDegree90RotatingStatus()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "19EC1685-7B58-420B-9C5A-64496ADBEBE8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestIsolate/CropView/CropOverlayView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "layoutGridLines()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1203A1D5-C72E-4A47-9B04-45DEEBC3C181"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestIsolate/CropView/CropScrollView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "checkContentOffset()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A1F6FE52-0649-4378-98F2-366C3ACDD5B8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestIsolate/CropView/CropScrollView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "checkContentOffset()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3A7003CC-5B0F-458B-84B6-1165F79A8609"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestIsolate/CropView/CropScrollView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "checkContentOffset()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "187D3666-2545-49CC-909D-03D673C2EB5D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestIsolate/CropView/CropScrollView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "getBoundZoomScale()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "72D131E1-CB63-4306-8CA3-B47354FC1DB5"
+            uuid = "9E1BB592-922C-4D48-99E1-0E58B8B24156"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestIsolate/CropViewController/CropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "getRatioType()"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "initLayout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B9555230-937C-4B75-B9E3-46BCE8A425A4"
+            uuid = "3F11A549-35FE-4311-826A-236719B1538A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestIsolate/CropViewController/Views/CropView/CropView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "CropView"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "3F11A549-35FE-4311-826A-236719B1538A - 71f42d52c0def875"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestIsolate.CropView.scrollView.getter : TestIsolate.CropScrollView"
+                  moduleName = "TestIsolate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khangl/dev/ios/TestIsolate/TestIsolate/CropViewController/Views/CropView/CropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "3F11A549-35FE-4311-826A-236719B1538A - 444f010c579857d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestIsolate.CropView.scrollView.setter : TestIsolate.CropScrollView"
+                  moduleName = "TestIsolate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khangl/dev/ios/TestIsolate/TestIsolate/CropViewController/Views/CropView/CropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "3F11A549-35FE-4311-826A-236719B1538A - 3ea343482203f652"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestIsolate.CropView.scrollView.modify : TestIsolate.CropScrollView"
+                  moduleName = "TestIsolate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khangl/dev/ios/TestIsolate/TestIsolate/CropViewController/Views/CropView/CropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "3F11A549-35FE-4311-826A-236719B1538A - 7c4e654139bc918f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestIsolate.CropView.scrollView.modify : TestIsolate.CropScrollView with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "TestIsolate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khangl/dev/ios/TestIsolate/TestIsolate/CropViewController/Views/CropView/CropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "3F11A549-35FE-4311-826A-236719B1538A - 6b109597ddeb7ab5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestIsolate.CropView.init(image: __C.UIImage, viewModel: TestIsolate.CropViewModel) -&gt; TestIsolate.CropView"
+                  moduleName = "TestIsolate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khangl/dev/ios/TestIsolate/TestIsolate/CropViewController/Views/CropView/CropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "3F11A549-35FE-4311-826A-236719B1538A - c978b1f49eca323a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestIsolate.CropView.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;TestIsolate.CropView&gt;"
+                  moduleName = "TestIsolate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khangl/dev/ios/TestIsolate/TestIsolate/CropViewController/Views/CropView/CropView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8BC78C1-8D2F-41E3-B5ED-8BC99F8A91EA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestIsolate/CropViewController/CropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "handleAlterCropper90Degree()"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "changeStackViewOrder()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "860A62A1-EE9A-4929-83D7-4BE366B92089"
+            uuid = "AF13B959-0451-45ED-BA56-3A5884CC38D5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestIsolate/CropView/MaskBackground/CropMaskProtocol.swift"
+            filePath = "TestIsolate/CropViewController/CropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "adaptMaskTo(match:cropRatio:)"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "changeStackViewOrder()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF833D96-0A02-4683-B3A9-242B12094B99"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerImageView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "labelViewDidSelected(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4B44570-4330-4F77-8D94-3436E7FDD4D9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerLabelView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "contentTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EAD10035-3BE9-4124-A0A3-DFDC86881C6C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerImageView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "tapOutside()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EAD10035-3BE9-4124-A0A3-DFDC86881C6C - 223688f4872cc18a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestIsolate.JLStickerImageView.tapOutside() -&gt; ()"
+                  moduleName = "TestIsolate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khangl/dev/ios/TestIsolate/TestIsolate/DrawingText/StickerTextView/JLStickerImageView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "EAD10035-3BE9-4124-A0A3-DFDC86881C6C - 223688f4872cc18a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestIsolate.JLStickerImageView.tapOutside() -&gt; ()"
+                  moduleName = "TestIsolate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khangl/dev/ios/TestIsolate/TestIsolate/DrawingText/StickerTextView/JLStickerImageView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

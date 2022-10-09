@@ -21,14 +21,17 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KXO-Ch-sZT" customClass="JLStickerImageView" customModule="TestIsolate" customModuleProvider="target">
+                    <rect key="frame" x="16" y="52" width="358" height="663.66666666666663"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyS-MQ-5GB" userLabel="FormatView">
-                    <rect key="frame" x="0.0" y="716" width="390" height="86"/>
+                    <rect key="frame" x="0.0" y="723.66666666666663" width="390" height="86.333333333333371"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LhS-BS-FiG">
-                            <rect key="frame" x="8" y="8" width="374" height="31"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LhS-BS-FiG" userLabel="Color Font">
+                            <rect key="frame" x="8" y="0.0" width="374" height="43.333333333333336"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47k-be-SMe">
-                                    <rect key="frame" x="0.0" y="0.0" width="165.33333333333334" height="31"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="165.33333333333334" height="43.333333333333336"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Font"/>
                                     <connections>
@@ -36,7 +39,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xek-SH-XCh">
-                                    <rect key="frame" x="173.33333333333337" y="0.0" width="200.66666666666663" height="31"/>
+                                    <rect key="frame" x="173.33333333333337" y="0.0" width="200.66666666666663" height="43.333333333333336"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Color"/>
                                     <connections>
@@ -45,8 +48,8 @@
                                 </button>
                             </subviews>
                         </stackView>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pnj-Pn-FJ0">
-                            <rect key="frame" x="8" y="47" width="374" height="32"/>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pnj-Pn-FJ0" userLabel="Alignment View">
+                            <rect key="frame" x="8" y="43.333333333333371" width="374" height="44"/>
                             <segments>
                                 <segment title="Left"/>
                                 <segment title="Center"/>
@@ -62,24 +65,24 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="LhS-BS-FiG" secondAttribute="trailing" constant="8" id="3ee-Um-y2r"/>
                         <constraint firstAttribute="trailing" secondItem="pnj-Pn-FJ0" secondAttribute="trailing" constant="8" id="9An-BK-Nul"/>
+                        <constraint firstItem="LhS-BS-FiG" firstAttribute="height" secondItem="vyS-MQ-5GB" secondAttribute="height" multiplier="0.5" id="BAD-XP-3Ej"/>
                         <constraint firstItem="LhS-BS-FiG" firstAttribute="leading" secondItem="vyS-MQ-5GB" secondAttribute="leading" constant="8" id="H1Z-Tc-TTR"/>
-                        <constraint firstItem="LhS-BS-FiG" firstAttribute="top" secondItem="vyS-MQ-5GB" secondAttribute="top" constant="8" id="InO-3b-sIZ"/>
+                        <constraint firstItem="LhS-BS-FiG" firstAttribute="top" secondItem="vyS-MQ-5GB" secondAttribute="top" id="InO-3b-sIZ"/>
                         <constraint firstItem="pnj-Pn-FJ0" firstAttribute="leading" secondItem="vyS-MQ-5GB" secondAttribute="leading" constant="8" id="Jbf-AT-q83"/>
-                        <constraint firstAttribute="bottom" secondItem="pnj-Pn-FJ0" secondAttribute="bottom" constant="8" id="RBv-14-L2Z"/>
-                        <constraint firstItem="pnj-Pn-FJ0" firstAttribute="top" secondItem="LhS-BS-FiG" secondAttribute="bottom" constant="8" id="olG-yt-9JH"/>
+                        <constraint firstAttribute="bottom" secondItem="pnj-Pn-FJ0" secondAttribute="bottom" id="RBv-14-L2Z"/>
+                        <constraint firstItem="pnj-Pn-FJ0" firstAttribute="height" secondItem="vyS-MQ-5GB" secondAttribute="height" multiplier="0.5" id="iuf-Rz-Q8g"/>
+                        <constraint firstItem="pnj-Pn-FJ0" firstAttribute="top" secondItem="LhS-BS-FiG" secondAttribute="bottom" id="olG-yt-9JH"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KXO-Ch-sZT" customClass="JLStickerImageView" customModule="TestIsolate" customModuleProvider="target">
-                    <rect key="frame" x="16" y="52" width="358" height="656"/>
-                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vyS-MQ-5GB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Xfg-H9-ztU"/>
+                <constraint firstItem="vyS-MQ-5GB" firstAttribute="height" secondItem="KXO-Ch-sZT" secondAttribute="height" multiplier="0.13" id="c2z-Gc-oEx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vyS-MQ-5GB" secondAttribute="trailing" id="cYW-k2-ftx"/>
                 <constraint firstItem="vyS-MQ-5GB" firstAttribute="top" secondItem="KXO-Ch-sZT" secondAttribute="bottom" constant="8" id="dVw-ac-BKh"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vyS-MQ-5GB" secondAttribute="bottom" constant="8" id="hI1-qg-yDZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vyS-MQ-5GB" secondAttribute="bottom" id="hI1-qg-yDZ"/>
                 <constraint firstItem="KXO-Ch-sZT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="iy8-s2-XoP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KXO-Ch-sZT" secondAttribute="trailing" constant="16" id="khf-v3-YMs"/>
                 <constraint firstItem="KXO-Ch-sZT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="zS3-Ef-VU5"/>

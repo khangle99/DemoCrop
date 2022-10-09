@@ -32,7 +32,6 @@ public class CropViewController: UIViewController {
     public weak var delegate: CropViewControllerDelegate?
     public var config = Config()
     
-    private var orientation: UIDeviceOrientation?
     private lazy var cropView = CropView(image: image, viewModel: CropViewModel())
     private var cropToolbar: CropToolbarProtocol
     private var ratioSelector: RatioSelector!
@@ -150,13 +149,16 @@ public class CropViewController: UIViewController {
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         cropView.prepareForDeviceRotation()
+        
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         rotated()
     }
     
     private func rotated() {
-        let currentOrientation = UIDevice.current.orientation
-        
-        orientation = currentOrientation
+        let currentOrientation = UIApplication.shared.statusBarOrientation
         
         if UIDevice.current.userInterfaceIdiom == .phone
             && currentOrientation == .portraitUpsideDown {
@@ -272,7 +274,7 @@ extension CropViewController {
     }
     
     fileprivate func setStackViewAxis() {
-        if UIDevice.current.orientation == .portrait {
+        if !UIApplication.shared.isLandscape {
             stackView?.axis = .vertical
         } else {
             stackView?.axis = .horizontal
@@ -283,10 +285,10 @@ extension CropViewController {
         stackView?.removeArrangedSubview(cropStackView)
         stackView?.removeArrangedSubview(cropToolbar)
         
-        if UIDevice.current.orientation == .portrait || UIDevice.current.orientation == .landscapeRight {
+        if !UIApplication.shared.isLandscape {
             stackView?.addArrangedSubview(cropStackView)
             stackView?.addArrangedSubview(cropToolbar)
-        } else if UIDevice.current.orientation == .landscapeLeft {
+        } else {
             stackView?.addArrangedSubview(cropToolbar)
             stackView?.addArrangedSubview(cropStackView)
         }
@@ -353,3 +355,15 @@ extension CropViewController {
     }
 }
 
+extension UIApplication {
+    
+    var isLandscape: Bool {
+        if #available(iOS 13.0, *) {
+            return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isLandscape ?? true
+        } else {
+            return UIApplication.shared.statusBarOrientation.isLandscape
+        }
+    }
+    
+    
+}

@@ -43,7 +43,12 @@ extension CropMaskProtocol {
                 
         let scaleY = cropRect.height / minOverLayerUnit
 
-        transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+        if scaleX == 0 || scaleY == 0 {
+            transform = .identity
+        } else {
+            transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+        }
+        
 
         self.frame.origin.x = cropRect.midX - self.frame.width / 2
         self.frame.origin.y = cropRect.midY - self.frame.height / 2

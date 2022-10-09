@@ -10,10 +10,15 @@ import UIKit
 class DrawTextViewController: UIViewController {
     
     @IBOutlet weak var stickerImageView: JLStickerImageView!
+    private var currentFocusLabel: JLStickerLabelView?
     var image: UIImage?
     private var textColor: UIColor = .red
     
     @IBOutlet weak var formatView: UIView!
+    
+    public override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +92,7 @@ extension DrawTextViewController: JLStickerImageViewDelegate {
     func didTapOutside() {
     }
     
-    func didTapEditingLabel() {
+    func didTapEditingLabel(_ label: JLStickerLabelView) {
     }
 }
 
