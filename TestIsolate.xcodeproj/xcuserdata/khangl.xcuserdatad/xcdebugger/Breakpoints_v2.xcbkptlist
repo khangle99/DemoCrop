@@ -14,8 +14,8 @@
             filePath = "TestIsolate/CropViewController/CropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "initLayout()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "TestIsolate/CropViewController/Views/CropView/CropView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "CropView"
             landmarkType = "3">
             <Locations>
@@ -138,8 +138,8 @@
             filePath = "TestIsolate/CropViewController/CropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "changeStackViewOrder()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,8 +154,8 @@
             filePath = "TestIsolate/CropViewController/CropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "changeStackViewOrder()"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,14 +164,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CF833D96-0A02-4683-B3A9-242B12094B99"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerImageView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "labelViewDidSelected(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -180,7 +180,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B4B44570-4330-4F77-8D94-3436E7FDD4D9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerLabelView.swift"
@@ -196,7 +196,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EAD10035-3BE9-4124-A0A3-DFDC86881C6C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerImageView.swift"
@@ -220,7 +220,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "147"
                   endingLineNumber = "147"
-                  offsetFromSymbolStart = "88">
+                  offsetFromSymbolStart = "100">
                </Location>
                <Location
                   uuid = "EAD10035-3BE9-4124-A0A3-DFDC86881C6C - 223688f4872cc18a"
@@ -235,9 +235,57 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "147"
                   endingLineNumber = "147"
-                  offsetFromSymbolStart = "132">
+                  offsetFromSymbolStart = "144">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D689A566-A91F-4CBE-A56F-BD8E115E5805"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestIsolate/CropViewController/FixedRatioManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "addExtraDefaultRatios()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6680379E-8D57-466B-B554-70B2F6692AC8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestIsolate/CropViewController/CropViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "gotoAddTextScreen()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D5F4959-0461-4B62-B567-442AB3330B21"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestIsolate/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "cropViewControllerDidCrop(_:cropped:transformation:cropInfo:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

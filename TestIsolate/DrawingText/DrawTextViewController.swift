@@ -7,29 +7,45 @@
 
 import UIKit
 
+protocol DrawTextViewControllerDelegate: AnyObject {
+    func didRenderText(_ image: UIImage)
+}
+
 class DrawTextViewController: UIViewController {
     
     @IBOutlet weak var stickerImageView: JLStickerImageView!
+    
+    weak var delegate: DrawTextViewControllerDelegate?
     private var currentFocusLabel: JLStickerLabelView?
     var image: UIImage?
     private var textColor: UIColor = .red
     
+    @IBOutlet weak var toolView: UIStackView!
     @IBOutlet weak var formatView: UIView!
+    
+    private var isFormatting = false {
+        didSet {
+            formatView.isHidden = !isFormatting
+            toolView.isHidden = isFormatting
+        }
+    }
     
     public override var prefersStatusBarHidden: Bool {
         return true
     }
     
+    @IBOutlet weak var selectColorButton: UIButton!
+    @IBOutlet weak var selectFontBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         stickerImageView.delegate = self
         stickerImageView.image = image
-        
-        let addTextItem = UIBarButtonItem(title: "Add Text", style: .plain, target: self, action: #selector(addTextTap))
+
+        let addTextItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneTap))
         navigationItem.rightBarButtonItem = addTextItem
     }
     
-    @objc func addTextTap(_ sender: Any) {
+    @IBAction func addTextTap(_ sender: Any) {
         self.stickerImageView.addLabel()
         guard let editLabel = stickerImageView.currentlyEditingLabel else { return }
         editLabel.closeView?.image = UIImage(named: "cancel")
@@ -40,7 +56,11 @@ class DrawTextViewController: UIViewController {
         editLabel.labelTextView?.text = "Text"
         stickerImageView.textColor = .red
         stickerImageView.fontName = "HelveticaNeue"
-       
+    }
+    @objc func doneTap(_ sender: Any) {
+        guard let image =  stickerImageView.renderContentOnView() else { return }
+        delegate?.didRenderText(image)
+        //navigationController?.popViewController(animated: true)
     }
     
     @IBAction func selectFontTap(_ sender: Any) {
@@ -90,9 +110,11 @@ extension DrawTextViewController: ColorPickerDelegate {
 
 extension DrawTextViewController: JLStickerImageViewDelegate {
     func didTapOutside() {
+        isFormatting = false
     }
     
     func didTapEditingLabel(_ label: JLStickerLabelView) {
+        isFormatting = true
     }
 }
 

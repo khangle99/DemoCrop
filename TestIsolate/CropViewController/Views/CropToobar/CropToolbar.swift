@@ -48,7 +48,7 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     private func createCancelButton() {
-        cancelButton = createOptionButton(withTitle: "cancel", andAction: #selector(cancel))
+        cancelButton = createOptionButton(withTitle: "Cancel", andAction: #selector(cancel))
     }
 
     private func createCounterClockwiseRotationButton() {
@@ -72,7 +72,8 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     private func createAlterCropper90DegreeButton() {
-        alterCropper90DegreeButton = createOptionButton(withTitle: "alter90", andAction: #selector(alterCropper90Degree))
+        alterCropper90DegreeButton = createOptionButton(withTitle: nil, andAction: #selector(alterCropper90Degree))
+        alterCropper90DegreeButton?.setImage(UIImage(named: "rotate"), for: .normal)
     }
 
     private func createResetButton(with image: UIImage? = nil) {
@@ -86,7 +87,7 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     private func createCropButton() {
-        cropButton = createOptionButton(withTitle: "done", andAction: #selector(crop))
+        cropButton = createOptionButton(withTitle: "Done", andAction: #selector(crop))
     }
 
     private func createButtonContainer() {

@@ -29,6 +29,7 @@ public class CropViewController: UIViewController {
         }
     }
     
+    private var cropResult: CropResult?
     public weak var delegate: CropViewControllerDelegate?
     public var config = Config()
     
@@ -119,13 +120,22 @@ public class CropViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        let addTextItem = UIBarButtonItem(title: "Add Text", style: .plain, target: self, action: #selector(gotoAddTextScreen))
+        let markupButtn = UIButton(frame: .zero)
+        markupButtn.setImage(UIImage(named: "markup"), for: .normal)
+        markupButtn.addTarget(self, action: #selector(gotoAddTextScreen), for: .touchUpInside)
+        let addTextItem = UIBarButtonItem(customView: markupButtn)
+        NSLayoutConstraint.activate([
+            markupButtn.widthAnchor.constraint(equalToConstant: 32),
+            markupButtn.heightAnchor.constraint(equalToConstant: 32)
+        ])
         navigationItem.rightBarButtonItem = addTextItem
     }
     
     @objc func gotoAddTextScreen() {
         let vc = DrawTextViewController()
-        vc.image = image
+        vc.delegate = self
+        cropResult = cropView.crop()
+        vc.image = cropResult?.croppedImage
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -234,7 +244,7 @@ public class CropViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.cropView.setFixedRatioCropBox()
             
-           // self.ratioSelector?.update(fixedRatioManager: self.getFixedRatioManager(forceType: orientation))
+            self.ratioSelector?.update(fixedRatioManager: self.getFixedRatioManager(forceType: orientation))
         }
     }
     
@@ -315,12 +325,14 @@ extension CropViewController: CropViewDelegate {
 extension CropViewController: CropToolbarDelegate {
     public func didSelectCancel() {
         handleCancel()
-        self.dismiss(animated: true)
+        //self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     public func didSelectCrop() {
         handleCrop()
-        self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
+        //self.dismiss(animated: true)
     }
     
     public func didSelectCounterClockwiseRotate() {
@@ -352,6 +364,14 @@ extension CropViewController {
                                             cropped: image,
                                             transformation: cropResult.transformation,
                                             cropInfo: cropResult.cropInfo)
+    }
+}
+
+extension CropViewController: DrawTextViewControllerDelegate {
+    func didRenderText(_ image: UIImage) {
+        guard let result = cropResult else { return }
+        delegate?.cropViewControllerDidCrop(self, cropped: image, transformation: result.transformation, cropInfo: result.cropInfo)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 

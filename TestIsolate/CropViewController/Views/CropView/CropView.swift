@@ -17,6 +17,8 @@ let minimumAspectRatio: CGFloat = 0
 let hotAreaUnit: CGFloat = 32
 let cropViewPadding:CGFloat = 14.0
 
+typealias CropResult = (croppedImage: UIImage?, transformation: Transformation, cropInfo: CropInfo)
+
 class CropView: UIView {
 
     var cropVisualEffectType: CropVisualEffectType = .blurDark
@@ -459,7 +461,7 @@ extension CropView {
 
 // MARK: - internal API
 extension CropView {
-    func crop(_ image: UIImage) -> (croppedImage: UIImage?, transformation: Transformation, cropInfo: CropInfo) {
+    func crop(_ image: UIImage) -> CropResult {
 
         let cropInfo = getCropInfo()
         
@@ -503,7 +505,7 @@ extension CropView {
         return viewModel.getTotalRadians()
     }
     
-    func crop() -> (croppedImage: UIImage?, transformation: Transformation, cropInfo: CropInfo) {
+    func crop() -> CropResult {
         return crop(image)
     }
         
