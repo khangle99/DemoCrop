@@ -13,7 +13,11 @@ protocol DrawTextViewControllerDelegate: AnyObject {
 
 class DrawTextViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stickerImageView: JLStickerImageView!
+    
+    private var previousInset: UIEdgeInsets?
+    private var previousIndicatorInset: UIEdgeInsets?
     
     weak var delegate: DrawTextViewControllerDelegate?
     private var currentFocusLabel: JLStickerLabelView?
@@ -43,6 +47,46 @@ class DrawTextViewController: UIViewController {
 
         let addTextItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneTap))
         navigationItem.rightBarButtonItem = addTextItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShowHideHandle), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShowHideHandle), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardShowHideHandle(noti: Notification) {
+        guard let userInfo = noti.userInfo,
+        let keyboardInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        guard let textLabel = stickerImageView.currentlyEditingLabel else { return }
+        
+        let textLabelWindowRect = stickerImageView.convert(textLabel.frame, to: nil)
+        
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            print("show")
+            let keyboardRect = keyboardInfo.cgRectValue
+            if keyboardRect.intersects(textLabelWindowRect) {
+                let offset = keyboardRect.size.height
+                previousInset = scrollView.contentInset
+                previousIndicatorInset = scrollView.scrollIndicatorInsets
+                scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: offset, right: 0)
+                scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: offset, right: 0)
+            }
+            
+        } else {
+            if let inset = previousInset, let indicatorInset = previousIndicatorInset {
+                scrollView.contentInset = inset
+                scrollView.scrollIndicatorInsets = indicatorInset
+            }
+            print("hide")
+        }
+        
     }
     
     @IBAction func addTextTap(_ sender: Any) {

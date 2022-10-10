@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawTextViewController" customModule="TestIsolate" customModuleProvider="target">
             <connections>
                 <outlet property="formatView" destination="vyS-MQ-5GB" id="2QQ-MS-0V6"/>
+                <outlet property="scrollView" destination="mMv-gF-Fg5" id="ltg-Yo-7kp"/>
                 <outlet property="selectColorButton" destination="xek-SH-XCh" id="gDH-ZF-su0"/>
                 <outlet property="selectFontBtn" destination="47k-be-SMe" id="eWd-bA-SVV"/>
                 <outlet property="stickerImageView" destination="KXO-Ch-sZT" id="CG4-I0-4hV"/>
