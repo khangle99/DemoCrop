@@ -81,6 +81,7 @@
 		1A119DE428F03DBD0088F9CB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119DC528F03DBD0088F9CB /* Color.swift */; };
 		1A119DE528F03DBD0088F9CB /* ConicalGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119DC728F03DBD0088F9CB /* ConicalGradientLayer.swift */; };
 		1A119DE628F03DBD0088F9CB /* ConicalGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A119DC828F03DBD0088F9CB /* ConicalGradientView.swift */; };
+		1AAE763228F4114A00285D16 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE763128F4114A00285D16 /* UIImageViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +163,7 @@
 		1A119DC528F03DBD0088F9CB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1A119DC728F03DBD0088F9CB /* ConicalGradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConicalGradientLayer.swift; sourceTree = "<group>"; };
 		1A119DC828F03DBD0088F9CB /* ConicalGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConicalGradientView.swift; sourceTree = "<group>"; };
+		1AAE763128F4114A00285D16 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				1A119BCE28EDE50D0088F9CB /* CGImageExtensions.swift */,
 				1A119BCF28EDE50D0088F9CB /* UIImageExtensions.swift */,
 				1A119BD028EDE50D0088F9CB /* CoreGraphicsExtensions.swift */,
+				1AAE763128F4114A00285D16 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				1A119DD728F03DBD0088F9CB /* BottomSheetTransition.swift in Sources */,
 				1A119C0628EF39440088F9CB /* DrawTextViewController.swift in Sources */,
 				1A119BD228EDE50D0088F9CB /* UIImageExtensions.swift in Sources */,
+				1AAE763228F4114A00285D16 /* UIImageViewExtension.swift in Sources */,
 				1A119C0028EF38C20088F9CB /* AdjustToFitFontOrWidth.swift in Sources */,
 				1A119BB928EDE3120088F9CB /* ImageContainer.swift in Sources */,
 				1A119BBA28EDE3120088F9CB /* CropMaskViewManager.swift in Sources */,

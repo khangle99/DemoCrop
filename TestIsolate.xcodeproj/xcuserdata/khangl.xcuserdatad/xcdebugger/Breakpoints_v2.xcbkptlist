@@ -170,8 +170,8 @@
             filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerImageView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "labelViewDidSelected(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,8 +186,8 @@
             filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerLabelView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "contentTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,8 +202,8 @@
             filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerImageView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "tapOutside()"
             landmarkType = "7">
             <Locations>
@@ -275,16 +275,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8D5F4959-0461-4B62-B567-442AB3330B21"
+            uuid = "096C1494-290A-418F-8A27-F727B98CA9E6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestIsolate/ViewController.swift"
+            filePath = "TestIsolate/CropViewController/CropViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "cropViewControllerDidCrop(_:cropped:transformation:cropInfo:)"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "gotoAddTextScreen()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "640E1BB2-289A-4863-A2D5-244D10DFBF55"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestIsolate/DrawingText/StickerTextView/JLStickerLabelView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "moveGesture(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -44,6 +44,7 @@ public class JLStickerLabelView: UIView {
     var delegate: JLStickerLabelViewDelegate?
     
     fileprivate var globalInset: CGFloat?
+    var allowRect: CGRect?
     
     fileprivate var initialBounds: CGRect?
     fileprivate var initialDistance: CGFloat?
@@ -310,7 +311,10 @@ extension JLStickerLabelView: UIGestureRecognizerDelegate, AdjustFontSizeToFillR
             beginningPoint = touchLocation
             beginningCenter = self.center
             
-            self.center = self.estimatedCenter()
+            if let newCenter = self.estimatedCenter() {
+                self.center = newCenter
+            }
+            
             beginBounds = self.bounds
             
             if let delegate: JLStickerLabelViewDelegate = delegate {
@@ -318,16 +322,20 @@ extension JLStickerLabelView: UIGestureRecognizerDelegate, AdjustFontSizeToFillR
             }
             
         case .changed:
-            self.center = self.estimatedCenter()
             
+            if let newCenter = self.estimatedCenter() {
+                self.center = newCenter
+            }
             
             if let delegate: JLStickerLabelViewDelegate = delegate {
                 delegate.labelViewDidChangeEditing!(self)
             }
             
         case .ended:
-            self.center = self.estimatedCenter()
-            
+          
+            if let newCenter = self.estimatedCenter() {
+                self.center = newCenter
+            }
             
             if let delegate: JLStickerLabelViewDelegate = delegate {
                 delegate.labelViewDidEndEditing!(self)
@@ -524,18 +532,19 @@ extension JLStickerLabelView {
         }
     }
     
-    fileprivate func estimatedCenter() -> CGPoint{
+    fileprivate func estimatedCenter() -> CGPoint? {
         let newCenter: CGPoint!
         var newCenterX = beginningCenter!.x + (touchLocation!.x - beginningPoint!.x)
         var newCenterY = beginningCenter!.y + (touchLocation!.y - beginningPoint!.y)
         
         if (enableMoveRestriction) {
-            if (!(newCenterX - 0.5 * self.frame.width > 0 &&
-                newCenterX + 0.5 * self.frame.width < self.superview!.bounds.width)) {
+            guard let allowRect = allowRect else { return nil }
+            if (!(newCenterX - 0.5 * self.frame.width > allowRect.minX &&
+                newCenterX + 0.5 * self.frame.width < allowRect.maxX)) {
                 newCenterX = self.center.x;
             }
-            if (!(newCenterY - 0.5 * self.frame.height > 0 &&
-                newCenterY + 0.5 * self.frame.height < self.superview!.bounds.height)) {
+            if (!(newCenterY - 0.5 * self.frame.height > allowRect.minY &&
+                newCenterY + 0.5 * self.frame.height < allowRect.maxY)) {
                 newCenterY = self.center.y;
             }
             newCenter = CGPoint(x: newCenterX, y: newCenterY)

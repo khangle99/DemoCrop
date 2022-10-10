@@ -62,6 +62,7 @@ extension JLStickerImageView {
                                     y: self.bounds.midY - CGFloat(arc4random()).truncatingRemainder(dividingBy: 20),
                                     width: 60, height: 50)
         let labelView = JLStickerLabelView(frame: labelFrame)
+        labelView.allowRect = self.contentClippingRect
         labelView.setupTextLabel()
         labelView.delegate = self
         labelView.showsContentShadow = false
@@ -95,13 +96,43 @@ extension JLStickerImageView {
         self.addGestureRecognizer(tapOutsideGestureRecognizer)
     }
     
+//    public func renderContentOnView() -> UIImage? {
+//
+//        self.cleanup()
+//        let rect = contentClippingRect
+//
+//        UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
+//        let context = UIGraphicsGetCurrentContext()!
+//        context.translateBy(x: -rect.origin.x, y: -rect.origin.y)
+//        self.layer.render(in: context)
+//
+//        let img = UIGraphicsGetImageFromCurrentImageContext()
+//
+//        UIGraphicsEndImageContext()
+//        return img
+//    }
+    
     public func renderContentOnView() -> UIImage? {
-        
         self.cleanup()
+        let rect = contentClippingRect
+        guard let image = image else { return nil }
+        // scaleup view len image scale
         
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0)
+        let scale: CGFloat
+        if image.size.width > image.size.height {
+            scale = image.size.width / bounds.width
+        } else {
+            scale = image.size.height / bounds.height
+        }
+        // scale up rect
+        let realRect = rect.applying(.init(scaleX: scale, y: scale))
         
-        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        UIGraphicsBeginImageContextWithOptions(realRect.size, true, 0)
+        let context = UIGraphicsGetCurrentContext()!
+        context.translateBy(x: -realRect.origin.x, y: -realRect.origin.y)
+        context.scaleBy(x: scale, y: scale)
+        self.layer.render(in: context)
+        
         let img = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
