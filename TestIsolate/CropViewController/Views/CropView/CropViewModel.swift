@@ -54,6 +54,8 @@ class CropViewModel: NSObject {
     var tappedEdge = CropViewOverlayEdge.none
     
     var degrees: CGFloat = 0
+    var verticalFlip = false
+    var horizontalFlip = false
     
     var radians: CGFloat {
         get {
@@ -67,6 +69,8 @@ class CropViewModel: NSObject {
     var cropRightBottomOnImage: CGPoint = CGPoint(x: 1, y: 1)
     
     func reset() {
+        verticalFlip = false
+        horizontalFlip = false
         cropBoxFrame = .zero
         degrees = 0
         rotationType = .none
@@ -184,6 +188,14 @@ class CropViewModel: NSObject {
 extension CropViewModel {
     func setInitialStatus() {
         viewStatus = .initial
+    }
+    
+    func setHorizontalFlippingStatus() {
+        viewStatus = .horizontalFlip
+    }
+    
+    func setVerticalFlippingStatus() {
+        viewStatus = .verticalFlip
     }
     
     func setDegree90RotatingStatus() {

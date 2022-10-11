@@ -114,6 +114,13 @@ extension UIImage {
         transform = transform.translatedBy(x: cropInfo.translation.x, y: cropInfo.translation.y)
         transform = transform.rotated(by: cropInfo.rotation)
         transform = transform.scaledBy(x: cropInfo.scale, y: cropInfo.scale)
+        if cropInfo.verticalFlip {
+            transform = transform.scaledBy(x: 1, y: -1)
+        }
+        
+        if cropInfo.horizontalFlip {
+            transform = transform.scaledBy(x: -1, y: 1)
+        }
         
         guard let imageRef = fixedImage.transformedImage(transform,
                                                          zoomScale: cropInfo.scale,

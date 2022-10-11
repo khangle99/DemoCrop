@@ -115,6 +115,12 @@ class CropView: UIView {
             gridOverlayView.handleEdgeUntouched()
             cropMaskViewManager.showVisualEffectBackground()
             checkImageStatusChanged()
+        case .horizontalFlip:
+            cropMaskViewManager.showVisualEffectBackground()
+            gridOverlayView.isHidden = true
+        case .verticalFlip:
+            cropMaskViewManager.showVisualEffectBackground()
+            gridOverlayView.isHidden = true
         }
     }
     
@@ -496,7 +502,9 @@ extension CropView {
             rotation: getTotalRadians(),
             scale: scrollView.zoomScale,
             cropSize: gridOverlayView.frame.size,
-            imageViewSize: imageContainer.bounds.size
+            imageViewSize: imageContainer.bounds.size,
+            horizontalFlip: viewModel.horizontalFlip,
+            verticalFlip: viewModel.verticalFlip
         )
         
     }
@@ -557,6 +565,55 @@ extension CropView {
             guard let self = self else { return }
             self.scrollView.updateMinZoomScale()
             self.viewModel.rotateBy90(rotateAngle: rotateAngle)
+            self.viewModel.setBetweenOperationStatus()
+            completion()
+        }
+    }
+    
+    func verticalFlip(completion: @escaping ()->Void = {}) {
+        viewModel.setVerticalFlippingStatus()
+        let flipDuration = 0.25
+        
+        var rect = gridOverlayView.frame
+        rect.size.width = gridOverlayView.frame.height
+        rect.size.height = gridOverlayView.frame.width
+        viewModel.verticalFlip.toggle()
+        
+        let transfrom = scrollView.transform.scaledBy(x: 1, y: -1)
+        
+        UIView.animate(withDuration: flipDuration, animations: {
+            //self.viewModel.cropBoxFrame = newRect
+            self.scrollView.transform = transfrom
+            //self.updatePositionFor90Rotation(by: radian + self.viewModel.radians)
+        }) {[weak self] _ in
+            guard let self = self else { return }
+            self.scrollView.updateMinZoomScale()
+            //self.viewModel.rotateBy90(rotateAngle: rotateAngle)
+            self.viewModel.setBetweenOperationStatus()
+            completion()
+        }
+    }
+    
+    func horizontalFlip(completion: @escaping ()->Void = {}) {
+        viewModel.setHorizontalFlippingStatus()
+        viewModel.horizontalFlip.toggle()
+        let flipDuration = 0.25
+        
+        var rect = gridOverlayView.frame
+        rect.size.width = gridOverlayView.frame.height
+        rect.size.height = gridOverlayView.frame.width
+        
+        
+        let transfrom = scrollView.transform.scaledBy(x: -1, y: 1)
+        
+        UIView.animate(withDuration: flipDuration, animations: {
+            //self.viewModel.cropBoxFrame = newRect
+            self.scrollView.transform = transfrom
+            //self.updatePositionFor90Rotation(by: radian + self.viewModel.radians)
+        }) {[weak self] _ in
+            guard let self = self else { return }
+            self.scrollView.updateMinZoomScale()
+            //self.viewModel.rotateBy90(rotateAngle: rotateAngle)
             self.viewModel.setBetweenOperationStatus()
             completion()
         }

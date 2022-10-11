@@ -69,7 +69,6 @@ class DrawTextViewController: UIViewController {
         let textLabelWindowRect = stickerImageView.convert(textLabel.frame, to: nil)
         
         if noti.name == UIResponder.keyboardWillShowNotification {
-            print("show")
             let keyboardRect = keyboardInfo.cgRectValue
             if keyboardRect.intersects(textLabelWindowRect) {
                 let offset = keyboardRect.size.height
@@ -84,7 +83,6 @@ class DrawTextViewController: UIViewController {
                 scrollView.contentInset = inset
                 scrollView.scrollIndicatorInsets = indicatorInset
             }
-            print("hide")
         }
         
     }

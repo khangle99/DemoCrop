@@ -14,6 +14,8 @@ public protocol CropToolbarDelegate: AnyObject {
     func didSelectClockwiseRotate()
     func didSelectReset()
     func didSelectAlterCropper90Degree()
+    func didSelectHorizontalFlip()
+    func didSelectVerticalFlip()
 }
 
 public protocol CropToolbarProtocol: UIView {
@@ -31,9 +33,6 @@ public protocol CropToolbarProtocol: UIView {
     
     func respondToOrientationChange()
     func adjustLayoutConstraintsWhenOrientationChange()
-        
-    func handleCropViewDidBecomeResettable()
-    func handleCropViewDidBecomeUnResettable()
 }
 
 public extension CropToolbarProtocol {
@@ -56,15 +55,6 @@ public extension CropToolbarProtocol {
             heightForVerticalOrientationConstraint?.isActive = false
             widthForHorizonOrientationConstraint?.isActive = true
         }
-    }
-
-        
-    func handleCropViewDidBecomeResettable() {
-        
-    }
-    
-    func handleCropViewDidBecomeUnResettable() {
-        
     }
 }
 

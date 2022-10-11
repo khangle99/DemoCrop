@@ -121,6 +121,7 @@ public class CropViewController: UIViewController {
     
     private func setupNavigationBar() {
         let markupButtn = UIButton(frame: .zero)
+        markupButtn.tintColor = .white
         markupButtn.setImage(UIImage(named: "markup"), for: .normal)
         markupButtn.addTarget(self, action: #selector(gotoAddTextScreen), for: .touchUpInside)
         let addTextItem = UIBarButtonItem(customView: markupButtn)
@@ -129,6 +130,27 @@ public class CropViewController: UIViewController {
             markupButtn.heightAnchor.constraint(equalToConstant: 32)
         ])
         navigationItem.rightBarButtonItem = addTextItem
+        
+        
+    }
+    
+    private var isResettable: Bool = false {
+        didSet {
+            if isResettable {
+                let resetBtn = UIButton(frame: .zero)
+                resetBtn.addTarget(self, action: #selector(resetRatio), for: .touchUpInside)
+                resetBtn.setTitle("Reset", for: .normal)
+                resetBtn.sizeToFit()
+                resetBtn.setTitleColor(.black, for: .normal)
+                navigationItem.titleView = resetBtn
+            } else {
+                navigationItem.titleView = nil
+            }
+        }
+    }
+    
+    @objc func resetRatio() {
+        handleReset()
     }
     
     @objc func gotoAddTextScreen() {
@@ -224,6 +246,28 @@ public class CropViewController: UIViewController {
         ratioSelector?.update(fixedRatioManager: getFixedRatioManager())
     }
     
+    private func handleVerticalFlip() {
+        if !disableRotation {
+            disableRotation = true
+            cropView.verticalFlip { [weak self] in
+                self?.disableRotation = false
+                //self?.ratioSelector?.update(fixedRatioManager: self?.getFixedRatioManager())
+            }
+        }
+        
+    }
+    
+    private func handleHorizontalFlip() {
+        if !disableRotation {
+            disableRotation = true
+            cropView.horizontalFlip { [weak self] in
+                self?.disableRotation = false
+                //self?.ratioSelector?.update(fixedRatioManager: self?.getFixedRatioManager())
+            }
+        }
+        
+    }
+    
     private func handleRotate(rotateAngle: CGFloat) {
         if !disableRotation {
             disableRotation = true
@@ -314,11 +358,11 @@ extension CropViewController {
 extension CropViewController: CropViewDelegate {
     
     func cropViewDidBecomeResettable(_ cropView: CropView) {
-        cropToolbar.handleCropViewDidBecomeResettable()
+        isResettable = true
     }
     
     func cropViewDidBecomeUnResettable(_ cropView: CropView) {
-        cropToolbar.handleCropViewDidBecomeUnResettable()
+        isResettable = false
     }
 }
 
@@ -349,6 +393,16 @@ extension CropViewController: CropToolbarDelegate {
     
     public func didSelectAlterCropper90Degree() {
         handleAlterCropper90Degree()
+    }
+    
+    public func didSelectVerticalFlip() {
+        handleVerticalFlip()
+        print("ver")
+    }
+    
+    public func didSelectHorizontalFlip() {
+        print("hor")
+        handleHorizontalFlip()
     }
 }
 

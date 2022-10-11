@@ -9,6 +9,8 @@ import Foundation
 
 enum CropViewStatus {
     case initial
+    case horizontalFlip
+    case verticalFlip
     case degree90Rotating
     case touchImage
     case touchCropboxHandle(tappedEdge: CropViewOverlayEdge = .none)

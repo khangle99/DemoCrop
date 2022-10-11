@@ -25,7 +25,7 @@ public typealias Transformation = (
     scrollBounds: CGRect
 )
 
-public typealias CropInfo = (translation: CGPoint, rotation: CGFloat, scale: CGFloat, cropSize: CGSize, imageViewSize: CGSize)
+public typealias CropInfo = (translation: CGPoint, rotation: CGFloat, scale: CGFloat, cropSize: CGSize, imageViewSize: CGSize, horizontalFlip: Bool, verticalFlip: Bool)
 
 // MARK: - Enums
 

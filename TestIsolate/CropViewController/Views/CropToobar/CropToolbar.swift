@@ -15,6 +15,8 @@ public class CropToolbar: UIView, CropToolbarProtocol {
 
     var cancelButton: UIButton?
     var resetButton: UIButton?
+    var horizontalFLipButton: UIButton?
+    var verticalFlipButton: UIButton?
     var counterClockwiseRotationButton: UIButton?
     var clockwiseRotationButton: UIButton?
     var alterCropper90DegreeButton: UIButton?
@@ -49,6 +51,26 @@ public class CropToolbar: UIView, CropToolbarProtocol {
 
     private func createCancelButton() {
         cancelButton = createOptionButton(withTitle: "Cancel", andAction: #selector(cancel))
+    }
+    
+    private func createHorizontalFlipButton() {
+        horizontalFLipButton = createOptionButton(withTitle: nil, andAction: #selector(horizontalFlip))
+        horizontalFLipButton?.setImage(UIImage(named: "horizontal_flip"), for: .normal)
+        horizontalFLipButton?.imageView?.contentMode = .scaleAspectFit
+        NSLayoutConstraint.activate([
+            horizontalFLipButton!.widthAnchor.constraint(equalToConstant: 50),
+            horizontalFLipButton!.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func createVerticalFlipButton() {
+        verticalFlipButton = createOptionButton(withTitle: nil, andAction: #selector(verticalFlip))
+        verticalFlipButton?.setImage(UIImage(named: "vertical_flip"), for: .normal)
+        verticalFlipButton?.imageView?.contentMode = .scaleAspectFit
+        NSLayoutConstraint.activate([
+            verticalFlipButton!.widthAnchor.constraint(equalToConstant: 50),
+            verticalFlipButton!.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 
     private func createCounterClockwiseRotationButton() {
@@ -136,6 +158,16 @@ public class CropToolbar: UIView, CropToolbarProtocol {
         createCancelButton()
         addButtonsToContainer(button: cancelButton)
 
+        if config.toolbarButtonOptions.contains(.horizontalFlip) {
+            createHorizontalFlipButton()
+            addButtonsToContainer(button: horizontalFLipButton)
+        }
+        
+        if config.toolbarButtonOptions.contains(.verticalFlip) {
+            createVerticalFlipButton()
+            addButtonsToContainer(button: verticalFlipButton)
+        }
+        
         if config.toolbarButtonOptions.contains(.counterclockwiseRotate) {
             createCounterClockwiseRotationButton()
             addButtonsToContainer(button: counterClockwiseRotationButton)
@@ -177,13 +209,6 @@ public class CropToolbar: UIView, CropToolbarProtocol {
     public func handleFixedRatioUnSetted() {
     }
 
-    public func handleCropViewDidBecomeResettable() {
-        resetButton?.isHidden = false
-    }
-
-    public func handleCropViewDidBecomeUnResettable() {
-        resetButton?.isHidden = true
-    }
 
     public func initConstraints(heightForVerticalOrientation: CGFloat, widthForHorizonOrientation: CGFloat) {
 
@@ -211,6 +236,14 @@ public class CropToolbar: UIView, CropToolbarProtocol {
 
     @objc private func crop(_ sender: Any) {
         cropToolbarDelegate?.didSelectCrop()
+    }
+    
+    @objc private func horizontalFlip(_ sender: Any) {
+        cropToolbarDelegate?.didSelectHorizontalFlip()
+    }
+    
+    @objc private func verticalFlip(_ sender: Any) {
+        cropToolbarDelegate?.didSelectVerticalFlip()
     }
 }
 
